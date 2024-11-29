@@ -1,0 +1,13 @@
+<swiper-container [config]="swiperConfig">
+    <ng-container *ngFor="let product of randomProducts">
+      <swiper-slide lazy="true">
+        <div class="product-card">
+        <img [src]="product.Resim_URL" alt="{{product.Urunler_Adi}}">
+        <h3>{{product.Urunler_Adi}}</h3>
+        <p>{{product.Urunler_Fiyat| currency: "₺"}}</p>
+      </div>
+      </swiper-slide>
+    </ng-container>
+</swiper-container>
+
+

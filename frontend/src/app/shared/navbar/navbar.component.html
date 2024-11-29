@@ -1,0 +1,32 @@
+<mat-toolbar color="primary" class="navbar">
+    <span (click)="selectItem('/home')">E-Commerce
+      <mat-icon>store</mat-icon>
+    </span>
+    <div class="nav-container">
+      <ng-container *ngFor="let item of navigationItems">
+        <button mat-button
+                (click)="selectItem(item.path)"
+                [ngClass]="item.class">{{ item.text }}</button>
+      </ng-container>
+    </div>
+
+
+<div class="spacer"></div>
+
+
+  <div class="icon-buttons">
+    <button mat-icon-button *ngIf="isLoggedIn " aria-label="Sepet" (click)="selectItem('/basket')" matBadge="{{ cartItemCount }}" matBadgeColor="warn">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <button mat-icon-button *ngIf="isLoggedIn" (click)="logout()" class="icon logout-icon" aria-label="">
+      <mat-icon>logout</mat-icon>
+    </button>
+    <button mat-icon-button class="icon account_circle-icon" *ngIf="isLoggedIn && !isAdmin" (click)="selectItem('/account')" aria-label="Account">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-icon-button class="icon favorite-icon" aria-label="icon-button with heart icon">
+      <mat-icon>favorite</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<br>
