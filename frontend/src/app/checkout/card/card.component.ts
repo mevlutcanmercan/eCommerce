@@ -31,7 +31,7 @@ export class CardComponent implements OnInit {
     // Subscribe to cart items
     this.cartService.cartItems$.subscribe((items: Product[]) => {
       this.cartItems = items;
-      this.totalAmount = this.cartItems.reduce((total, item) => total + (item.Urunler_Fiyat * item.adet), 0);
+      this.totalAmount = this.cartItems.reduce((total, item) => total + (item.productPrice * item.count), 0);
     });
   }
 
@@ -79,9 +79,9 @@ export class CardComponent implements OnInit {
       },
       basketItems: this.cartItems.map(item => ({
         id: item._id,
-        name: item.Urunler_Adi,
-        category1: item.Kategori_id.toString(),
-        price: parseFloat(item.Urunler_Fiyat.toFixed(2)),
+        name: item.productName,
+        category1: item.productCategoryID.toString(),
+        price: parseFloat(item.productPrice.toFixed(2)),
         itemType: 'PHYSICAL'
       }))
     };

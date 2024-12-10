@@ -6,6 +6,7 @@ import { MatFormField, MatLabel, MatFormFieldControl } from '@angular/material/f
 import { ProfileService } from '../../services/profile.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
+import { User } from '../../services/user.service';
 
 
 @Component({
@@ -35,14 +36,4 @@ export class ProfileComponent implements OnInit {
       console.error('Şifre değiştirilemedi', error);
     });
   }
-}
-export interface User {
-  _id: string;
-  Musteriler_Adi: string;
-  Musteriler_Soyadi: string;
-  Musteriler_Tc: string;
-  Musteriler_Sifre: string;
-  Musteriler_Email: string;
-  Musteriler_Telefon: string;
-  isAdmin:boolean;
 }

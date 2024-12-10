@@ -1,9 +1,9 @@
 <div class="category-selection">
   <div class="category-item" *ngFor="let upperCategory of upperCategories" (click)="toggleDropdown(upperCategory._id)">
-    {{ upperCategory.UstKategori_Adi }}
+    {{ upperCategory.upperCategories_Name }}
     <div class="subcategory-dropdown" *ngIf="selectedUpperCategoryId === upperCategory._id">
       <div class="subcategory-item" *ngFor="let subCategory of subcategories[upperCategory._id]" (click)="onSubcategoryClick(subCategory._id)">
-        {{ subCategory.Kategori_Adi }}
+        {{ subCategory.category_Name }}
       </div>
     </div>
   </div>

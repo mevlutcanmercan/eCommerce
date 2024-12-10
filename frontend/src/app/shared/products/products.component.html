@@ -8,13 +8,13 @@
     <mat-card *ngFor="let product of products" class="product-card">
       <div (click)="onProductClick(product._id)">
     <mat-card-header >
-      <mat-card-title>{{ product.Urunler_Adi }}</mat-card-title>
+      <mat-card-title>{{ product.productName }}</mat-card-title>
     </mat-card-header>
     <div class="product-image">
-    <img mat-card-image width="300px" height="300px" [src]="product.Resim_URL" alt="{{ product.Urunler_Adi }}">
+    <img mat-card-image width="300px" height="300px" [src]="product.productImageURL" alt="{{ product.productName }}">
   </div>
     <mat-card-content>
-      <p>{{ product.Urunler_Fiyat | currency: "₺" }}</p>
+      <p>{{ product.productPrice | currency: "₺" }}</p>
     </mat-card-content>
   </div>
     <mat-card-actions class="mat-card-actions">
@@ -29,3 +29,4 @@
                [pageSizeOptions]="[5, 10, 25, 100]"
                (page)="onPageChange($event)">
 </mat-paginator>
+

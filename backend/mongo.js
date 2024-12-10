@@ -1,4 +1,5 @@
-const dbURI = 'mongodb+srv://mevlutcanmercan55:bBDqWubd7igrqqCV@ecommercecluster.odkhm.mongodb.net/?retryWrites=true&w=majority&appName=eCommerceCluster'; 
+  /*
+const dbURI = 'mongodb+srv://mevlutcanmercan55:bBDqWubd7igrqqCV@ecommercecluster.odkhm.mongodb.net/eCommerceDB?retryWrites=true&w=majority&appName=eCommerceCluster'; 
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -491,7 +492,10 @@ app.delete('/comment/:commentId/delete', authenticate, authorizeAdmin, async (re
   }
 });
 
+
 // Server'ı başlatma
 app.listen(3000, () => {
   console.log('Server is running on port 3000');
 });
+
+*/

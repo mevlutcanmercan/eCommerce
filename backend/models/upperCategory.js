@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const upperCategoriesSchema = new Schema({
+const upperCategorySchema = new Schema({
     upperCategories_Name: { type: String, required: true }
 });
 
-const upperCategories = mongoose.model('upperCategories', upperCategoriesSchema);
-module.exports = upperCategories;
+const upperCategory = mongoose.model('upperCategory', upperCategorySchema);
+module.exports = upperCategory;

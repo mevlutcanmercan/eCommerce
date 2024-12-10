@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
-import { User } from '../../user/profile/profile.component';
+import { User } from '../../services/user.service';
 import { MatCellDef, MatColumnDef, MatTableModule } from '@angular/material/table'
 
 @Component({

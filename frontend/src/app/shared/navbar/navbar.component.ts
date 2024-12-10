@@ -15,6 +15,8 @@ import { CartService } from '../../services/cart.service';
 import { Product } from '../../services/product.service';
 import { MatBadgeModule } from '@angular/material/badge';
 import { AdminItem, ContentService, UserItem } from '../../services/content.service';
+import { SearchComponent } from "../search/search.component";
+
 
 @Component({
   selector: 'app-navbar',
@@ -29,8 +31,9 @@ import { AdminItem, ContentService, UserItem } from '../../services/content.serv
     MatFormFieldModule,
     MatMenuModule,
     CommonModule,
-    MatBadgeModule
-  ],
+    MatBadgeModule,
+    SearchComponent
+],
 })
 export class NavbarComponent implements OnInit {
   navigationItems: AdminItem[] | UserItem[] = [];
@@ -69,7 +72,7 @@ export class NavbarComponent implements OnInit {
 
     this.cartService.cartItems$.subscribe((items: Product[]) => {
       this.cartItems = items;
-      this.cartItemCount = items.reduce((count, item) => count + item.adet, 0);
+      this.cartItemCount = items.reduce((count, item) => count + item.count, 0);
     });
 
     this.authService.isAdmin.subscribe(isAdmin => {

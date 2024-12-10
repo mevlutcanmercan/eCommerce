@@ -2,6 +2,9 @@
     <span (click)="selectItem('/home')">E-Commerce
       <mat-icon>store</mat-icon>
     </span>
+
+    <app-search></app-search>
+
     <div class="nav-container">
       <ng-container *ngFor="let item of navigationItems">
         <button mat-button
@@ -9,7 +12,6 @@
                 [ngClass]="item.class">{{ item.text }}</button>
       </ng-container>
     </div>
-
 
 <div class="spacer"></div>
 

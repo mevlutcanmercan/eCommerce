@@ -1,0 +1,26 @@
+.search-container {
+  position: relative;
+  width: 300px;
+}
+
+ul {
+  position: absolute;
+  background: white;
+  border: 1px solid #ccc;
+  width: 100%;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+li {
+  padding: 10px;
+  cursor: pointer;
+}
+
+li:hover {
+  background: #f0f0f0;
+}

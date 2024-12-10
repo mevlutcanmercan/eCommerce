@@ -2,9 +2,9 @@
     <ng-container *ngFor="let product of randomProducts">
       <swiper-slide lazy="true">
         <div class="product-card">
-        <img [src]="product.Resim_URL" alt="{{product.Urunler_Adi}}">
-        <h3>{{product.Urunler_Adi}}</h3>
-        <p>{{product.Urunler_Fiyat| currency: "₺"}}</p>
+        <img [src]="product.productImageURL" alt="{{product.productName}}">
+        <h3>{{product.productName}}</h3>
+        <p>{{product.productPrice| currency: "₺"}}</p>
       </div>
       </swiper-slide>
     </ng-container>

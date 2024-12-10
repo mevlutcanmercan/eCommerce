@@ -55,7 +55,6 @@ export class ProductService {
     return this.http.delete<Product[]>(`${this.adminUrl}/products/${productId}`, { headers });
 
   }
-
   getSliderProduct(): Observable<Product[]>{
     return this.http.get<Product[]>(`${this.apiUrl}/slider`)
   }
@@ -85,31 +84,19 @@ export class ProductService {
 
 export interface Product {
   _id: string;
-  Urunler_Adi: string;
-  Urunler_Aciklama?: string;
-  Urunler_Fiyat: number;
-  Stok_Adet?: number;
-  Kategori_id: string;
-  Resim_URL?: string;
-  IndirimOrani: number;
-  Marka_id?: number;
-  adet: number;
+  productName: string;
+  productDescription?: string;
+  productPrice: number;
+  productStock?: number;
+  productCategoryID: string;
+  productImageURL?: string;
+  productDiscount: number;
+  productBrand?: number;
+  count: number;
 }
 export interface ProductResponse {
   data: Product[];
   total: number;
 }
 
-/*
-export enum ProductNames {
-  Urunler_id = 'Urunler_id',
-  Urunler_Adi = 'Urunler_Adi',
-  Urunler_Aciklama = 'Urunler_Aciklama',
-  Urunler_Fiyat = 'Urunler_Fiyat',
-  Stok_Adet = 'Stok_Adet',
-  Kategori_id = 'Kategori_id',
-  Resim_URL = 'Resim_URL',
-  IndirimOrani = 'IndirimOrani',
-  Marka_id = 'Marka_id',
-}
-*/
+

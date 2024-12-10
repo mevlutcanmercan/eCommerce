@@ -36,9 +36,9 @@ export class CartService {
     const existingProduct = currentItems.find(item => item._id === product._id);
 
     if (existingProduct) {
-      existingProduct.adet += 1;
+      existingProduct.count += 1;
     } else {
-      product.adet = 1;
+      product.count = 1;
       currentItems.push(product);
     }
 
@@ -68,8 +68,8 @@ export class CartService {
 
     if (productIndex > -1) {
       const product = currentItems[productIndex];
-      if (product.adet > 1) {
-        product.adet -= 1;
+      if (product.count > 1) {
+        product.count -= 1;
       } else {
         currentItems.splice(productIndex, 1);
       }

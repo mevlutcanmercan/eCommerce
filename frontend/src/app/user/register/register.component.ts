@@ -54,12 +54,12 @@ export class RegisterComponent {
       return;
     }
     const user = {
-      name: this.name,
-      surname: this.surname,
-      tc: this.tc,
-      email: this.email,
-      tel: this.tel,
-      password: this.password
+      userName: this.name,
+      userSurname: this.surname,
+      userTC: this.tc,
+      userMail: this.email,
+      userTel: this.tel,
+      userPassword: this.password
     };
 
     this.authService.register(user).subscribe({

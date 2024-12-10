@@ -15,6 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { ProductEditDialogComponent } from '../../admin/product-edit-dialog/product-edit-dialog.component';
 import { MESSAGES } from '../../constants';
+import { SearchService } from '../../services/search.service';
 
 
 @Component({
@@ -30,6 +31,7 @@ export class ProductsComponent implements OnInit {
   pageSize: number = 10;
   currentPage: number = 0;
   selectedCategoryId?: string;
+  selectedUpperCategoryId?: string;
   isAdmin: boolean = false;
   product: Product | null = null;
 
@@ -40,32 +42,57 @@ export class ProductsComponent implements OnInit {
      private cartService: CartService,
     private snackbarService: SnackbarService,
      private authService: AuthService,
+     private searchService: SearchService,
      private dialog: MatDialog
     ) { }
 
-  ngOnInit(): void {
-    this.route.queryParams.subscribe(params => {
-      this.selectedCategoryId = params['subCategoryId'];
-      this.loadProducts();
-    });
-    this.authService.isAdmin.subscribe(isAdmin => {
-      this.isAdmin = isAdmin;
-    });
-  }
+      ngOnInit(): void {
+        this.route.queryParams.subscribe(params => {
 
-  addToCart(product: Product): void {
-    if (this.authService.isLoggedIn && !this.isAdmin) {
-      this.productService.addToCart(product);
-      this.snackbarService.openProductAdded;
+          if (params['category']) {
+            this.selectedCategoryId = params['category'];
+            this.loadProducts();
+          }
+
+          else if (params['q']) {
+            this.searchService.searchAllProducts(params['q']).subscribe(
+              (response: any) => {
+
+                if (response.success && Array.isArray(response.data.products)) {
+                  this.products = response.data.products;
+                  this.totalProducts = response.data.products.length;
+                }
+
+                else {
+                  console.error('Invalid response format:', response);
+                  this.products = [];
+                }
+              },
+              error => console.error('Error fetching products:', error)
+            );
+          }
+          else {
+            this.loadProducts();
+          }
+        });
+      this.authService.isAdmin.subscribe(isAdmin => {
+        this.isAdmin = isAdmin;
+      });
     }
-    else if(this.authService.isLoggedIn && this.isAdmin)
-    {
-      this.snackbarService.openPorductFail;
+    loadSearchResults(query: string): void {
+      this.selectedCategoryId = '';
+      this.searchService.searchAllProducts(query).subscribe(
+        (products: Product[]) => {
+          console.log('Fetched products:', products);  // Ürünleri kontrol edin
+          this.products = products;
+          this.totalProducts = products.length;
+        },
+        error => {
+          console.error('Error fetching search results:', error);
+        }
+      );
     }
-    else{
-      this.snackbarService.openProfileFailSnackBar;
-    }
-  }
+
 
   loadProducts(): void {
     if (this.selectedCategoryId) {
@@ -90,6 +117,19 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  addToCart(product: Product): void {
+    if (this.authService.isLoggedIn && !this.isAdmin) {
+      this.productService.addToCart(product);
+      this.snackbarService.openProductAdded;
+    }
+    else if(this.authService.isLoggedIn && this.isAdmin)
+    {
+      this.snackbarService.openPorductFail;
+    }
+    else{
+      this.snackbarService.openProfileFailSnackBar;
+    }
+  }
 
   onPageChange(event: PageEvent): void {
     this.pageSize = event.pageSize;

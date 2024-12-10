@@ -48,7 +48,7 @@ export class BasketComponent implements OnInit{
     this.calculateTotal();
   }
   calculateTotal(): void {
-    this.totalAmount = this.cartItems.reduce((total, item) => total + item.Urunler_Fiyat * item.adet, 0);
+    this.totalAmount = this.cartItems.reduce((total, item) => total + item.productPrice * item.count, 0);
   }
 
   /*checkoutPopUp(): void {

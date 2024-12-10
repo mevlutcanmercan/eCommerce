@@ -43,25 +43,28 @@ export class LoginComponent {
 
   login() {
     const credentials = {
-      email: this.email,
-      password: this.password
+      userMail: this.email,
+      userPassword: this.password
     };
 
     this.authService.login(credentials).subscribe({
       next: (response: any) => {
-        this.token = response.token;
-        console.log('Token:', this.token);
+        if (response && response.token) {
+          this.token = response.token;
+          console.log('Token:', this.token);
 
-        localStorage.setItem('token', this.token);
+          localStorage.setItem('token', this.token);
 
-        this.successMessage = 'Login successful!';
-        this.dialogRef.close();
+          this.successMessage = 'Login successful!';
+          this.router.navigate(['/home']).then(() => this.dialogRef.close());
+        } else {
+          this.errorMessage = 'Unexpected response format.';
+        }
       },
       error: (error) => {
         console.error('Login failed', error);
-        this.errorMessage = 'Login failed. Please check your email and password.';
+        this.errorMessage = error.error?.message || 'Login failed. Please check your email and password.';
       }
     });
   }
 }
-

@@ -2,7 +2,6 @@
   import { HttpClient } from '@angular/common/http';
   import { Observable } from 'rxjs';
   import { EnvironmentService } from './environment.service';
-  import { User } from '../user/profile/profile.component';
 
   @Injectable({
     providedIn: 'root'
@@ -15,4 +14,14 @@
     getUsers(): Observable<User[]> {
       return this.http.get<User[]>(this.envService.getUserProfilesUrl());
     }
+  }
+  export interface User {
+    _id: string;
+    userName: string;
+    userSurname: string;
+    userTC: string;
+    userPassword: string;
+    userMail: string;
+    userTel: string;
+    isAdmin:boolean;
   }

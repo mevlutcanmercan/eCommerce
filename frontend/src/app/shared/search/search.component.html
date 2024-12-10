@@ -1,0 +1,18 @@
+<div class="search-container">
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    (input)="onSearch()"
+    placeholder="Search for products, categories..."
+  />
+  <button (click)="performSearch()">Search</button>
+
+  <ul *ngIf="results.products.length || results.categories.length || results.upperCategories.length">
+    <li *ngFor="let product of results.products" (click)="navigateToProduct(product._id)">
+      {{ product.productName }} - ${{ product.productPrice }}
+    </li>
+    <li *ngFor="let category of results.categories" (click)="navigateToCategory(category._id)">
+      {{ category.category_Name }}
+    </li>
+  </ul>
+</div>

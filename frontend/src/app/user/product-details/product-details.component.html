@@ -1,12 +1,12 @@
 <div class="product-detail-container" *ngIf="product">
   <mat-card class="product-card">
     <div class="product-image">
-      <img mat-card-image [src]="product.Resim_URL" alt="{{ product.Urunler_Adi }}">
+      <img mat-card-image [src]="product.productImageURL" alt="{{ product.productName }}">
     </div>
     <div class="product-info">
-      <mat-card-title>{{ product.Urunler_Adi }}</mat-card-title>
-      <p class="price">{{ product.Urunler_Fiyat | currency: '₺' }}</p>
-      <p class="description">{{ product.Urunler_Aciklama }}</p>
+      <mat-card-title>{{ product.productName }}</mat-card-title>
+      <p class="price">{{ product.productPrice | currency: '₺' }}</p>
+      <p class="description">{{ product.productDescription }}</p>
       <button mat-raised-button color="primary" (click)="addToCart()">Sepete Ekle</button>
     </div>
   </mat-card>

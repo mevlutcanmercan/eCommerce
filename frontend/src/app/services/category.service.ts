@@ -11,27 +11,30 @@ export class CategoryService {
 
   constructor(private http: HttpClient, private envService: EnvironmentService) { }
 
-  getCategories(): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/categories`);
+  getCategories(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${environment.apiUrl}/categories`);
   }
 
-  getUpperCategories(): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/uppercategories`);
+  getUpperCategories(): Observable<UpperCategory[]> {
+    return this.http.get<UpperCategory[]>(`${environment.apiUrl}/uppercategories`);
   }
 
-  getSubcategories(ustKategoriId: string): Observable<any> {
-    return this.http.get(`${environment.apiUrl}/subcategories/${ustKategoriId}`);
+  getSubcategories(upperCategories_id: string): Observable<Category[]> {
+    return this.http.get<Category[]>(`${environment.apiUrl}/subcategories/${upperCategories_id}`);
+  }
+  getCategoriesByID(categoryId: string) : Observable<Category[]>{
+    return this.http.get<Category[]>(`${environment.apiUrl}/categories/${categoryId}`);
   }
 }
 
 export interface UpperCategory {
   _id: string;
-  UstKategori_Adi: string;
+  upperCategories_Name: string;
   subcategories?: Category[];
 }
 
 export interface Category {
   _id: string;
-  Kategori_Adi: string;
-  UstKategori_id: string;
+  category_Name: string;
+  upperCategories_id: string;
 }

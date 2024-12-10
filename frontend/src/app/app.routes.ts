@@ -1,3 +1,4 @@
+import { Category } from './services/category.service';
 import { RouterModule, Routes} from '@angular/router';
 import { NgModule } from '@angular/core';
 import { RoleGuard } from './role.guard';
@@ -29,10 +30,11 @@ export const routes: Routes = [
     children: [
       { path: 'home', component: HomeComponent, title:'Home'},
       { path: 'products', component: ProductsComponent, title:'Products' },
-      { path: 'products/:productId', component: ProductDetailsComponent},
+      { path: 'products/:productId', component: ProductDetailsComponent },
       { path: 'login', component: LoginComponent, canActivate:[DialogGuard], title:'Login' },
       { path: 'register', component: RegisterComponent, canActivate:[DialogGuard], title:'Register' },
       { path: 'basket', component: BasketComponent, title:'Basket' },
+
       {
         path: 'account',
         component: AccountComponent,

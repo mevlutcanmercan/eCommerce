@@ -28,10 +28,10 @@ export class CategoryselectionComponent implements OnInit {
         this.upperCategories = categories;
 
         this.upperCategories.forEach(upperCategory => {
-          const ustKategoriId = upperCategory._id;
-          this.categoryService.getSubcategories(ustKategoriId).subscribe(
+          const upperCategories_id = upperCategory._id;
+          this.categoryService.getSubcategories(upperCategories_id).subscribe(
             (subcategories: Category[]) => {
-              this.subcategories[ustKategoriId] = subcategories;
+              this.subcategories[upperCategories_id] = subcategories;
             },
             error => {
               console.error('Error fetching subcategories:', error);
@@ -53,12 +53,12 @@ export class CategoryselectionComponent implements OnInit {
     }
   }
 
-  onSubcategoryClick(subCategoryId: string): void {
+  onSubcategoryClick(category: string): void {
  {
     }  if (this.isAdmin) {
-      this.router.navigate(['admin/products'], { queryParams: { subCategoryId } });
+      this.router.navigate(['admin/products'], { queryParams: { category } });
     } else {
-      this.router.navigate(['/products'], { queryParams: { subCategoryId } });
+      this.router.navigate(['/products'], { queryParams: { category } });
     }
   }
 }

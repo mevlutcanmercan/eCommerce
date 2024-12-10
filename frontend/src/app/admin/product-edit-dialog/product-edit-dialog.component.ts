@@ -28,13 +28,13 @@ export class ProductEditDialogComponent {
     @Inject(MAT_DIALOG_DATA) public data: { product: Product, isEditMode: boolean }
   ) {
     this.editForm = this.fb.group({
-      Urunler_Adi: [data.product.Urunler_Adi || ''],
-      Urunler_Aciklama: [data.product.Urunler_Aciklama || ''],
-      Urunler_Fiyat: [data.product.Urunler_Fiyat || 0],
-      Stok_Adet: [data.product.Stok_Adet || 0],
-      Kategori_id: [data.product.Kategori_id || ''],
-      IndirimOrani: [data.product.IndirimOrani || 0],
-      Resim_URL: [data.product.Resim_URL || '']
+      productName: [data.product.productName || ''],
+      productDescription: [data.product.productDescription || ''],
+      productPrice: [data.product.productPrice || 0],
+      productStock: [data.product.productStock || 0],
+      productCategoryID: [data.product.productCategoryID || ''],
+      productDiscount: [data.product.productDiscount || 0],
+      productImageURL: [data.product.productImageURL || '']
     });
   }
 
