@@ -5,14 +5,16 @@
     (input)="onSearch()"
     placeholder="Search for products, categories..."
   />
-  <button (click)="performSearch()">Search</button>
+  <button mat-icon-button class="icon-search" (click)="performSearch()">
+    <mat-icon>search</mat-icon>
+  </button>
 
-  <ul *ngIf="results.products.length || results.categories.length || results.upperCategories.length">
+  <ul *ngIf="isResultsVisible && (results.products.length || results.categories.length)">
     <li *ngFor="let product of results.products" (click)="navigateToProduct(product._id)">
-      {{ product.productName }} - ${{ product.productPrice }}
+      <span class="product-name">{{ product.productName }}</span>
     </li>
     <li *ngFor="let category of results.categories" (click)="navigateToCategory(category._id)">
-      {{ category.category_Name }}
+      <span class="category-name">{{ category.category_Name }}</span>
     </li>
   </ul>
 </div>

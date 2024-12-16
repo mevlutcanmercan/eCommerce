@@ -1,26 +1,86 @@
+/* Search Container */
 .search-container {
   position: relative;
-  width: 300px;
+  width: 200%;
+  max-width: 600px;
+  margin: 20px auto;
+  text-align: left;
+}
+/* Search Input */
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  width: 100%;
 }
 
+input[type="text"]:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Search Button with Icon */
+.icon-search {
+  padding: 10px;
+  font-size: 24px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.icon-search:hover {
+  background: #0056b3;
+}
+
+/* Search Results Dropdown */
 ul {
   position: absolute;
+  width: 100%;
   background: white;
   border: 1px solid #ccc;
-  width: 100%;
+  border-radius: 4px;
   list-style: none;
   padding: 0;
-  margin: 0;
-  max-height: 200px;
+  margin-top: 5px;
+  max-height: 300px;
   overflow-y: auto;
   z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+/* Search Result Items */
 li {
-  padding: 10px;
-  cursor: pointer;
+  padding: 15px;
+  font-size: 16px;
+  color: #333;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background 0.3s ease;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 li:hover {
-  background: #f0f0f0;
+  background: #f8f9fa;
+}
+
+/* Product and Category Styling */
+.product-name {
+  font-size: 16px;
+  color: #555;
+  font-weight: bold;
+}
+
+.category-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
 }
