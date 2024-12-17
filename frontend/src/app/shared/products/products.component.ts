@@ -16,6 +16,7 @@ import { MatInputModule } from '@angular/material/input';
 import { ProductEditDialogComponent } from '../../admin/product-edit-dialog/product-edit-dialog.component';
 import { MESSAGES } from '../../constants';
 import { SearchService } from '../../services/search.service';
+import { FilterComponent } from "../filter/filter.component";
 
 
 @Component({
@@ -23,7 +24,7 @@ import { SearchService } from '../../services/search.service';
     standalone: true,
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',
-    imports: [MatPaginator, MatCard, MatToolbar, MatCardHeader, MatCardHeader, MatCardContent, MatCardActions, MatCardTitle, CurrencyPipe, NgFor,NgIf, MatButton, MatIcon, CategoryselectionComponent,MatInputModule]
+    imports: [MatPaginator, MatCard, MatToolbar, MatCardHeader, MatCardHeader, MatCardContent, MatCardActions, MatCardTitle, CurrencyPipe, NgFor, NgIf, MatButton, MatIcon, CategoryselectionComponent, MatInputModule, FilterComponent]
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
