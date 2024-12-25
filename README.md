@@ -1,2 +1,2 @@
 # eCommerce
-eCommerce app with İyzico connection
+An ecommerce app with using Angular , NodeJs, MongoDb and İyzico Api
