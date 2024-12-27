@@ -45,12 +45,12 @@
           if (response.token) {
             if (this.isBrowser()) {
               localStorage.setItem('token', response.token);
-              localStorage.setItem('isAdmin', response.customer.isAdmin.toString());
+              localStorage.setItem('isAdmin', response.user.isAdmin.toString());
             }
             this.loggedIn.next(true);
-            this.isAdminSubject.next(response.customer.isAdmin);
+            this.isAdminSubject.next(response.user.isAdmin);
 
-            if (response.customer.isAdmin) {
+            if (response.user.isAdmin) {
               this.router.navigate(['/admin']);
             } else {
               this.router.navigate(['/home']);

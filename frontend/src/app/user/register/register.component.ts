@@ -69,12 +69,12 @@ export class RegisterComponent {
           this.router.navigate(['/login']);
           this.dialogRef.close();
         } else {
-          this.errorMessage = 'Kayıt başarısız. Lütfen tekrar deneyin.';
+          this.errorMessage = 'Registration failure.';
         }
       },
       error: (error) => {
-        console.error('Kayıt başarısız', error);
-        this.errorMessage = 'Kayıt başarısız. Lütfen tekrar deneyin.';
+        console.error('Registration failed', error);
+        this.errorMessage = 'Registration failure.';
       }
     });
   }

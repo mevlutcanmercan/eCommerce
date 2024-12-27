@@ -1,18 +1,17 @@
 import { Component, NgModule, OnInit } from '@angular/core';
-import { AccountComponent } from "../account/account.component";
-import { MatCard } from '@angular/material/card';
 import {MatTabsModule} from '@angular/material/tabs';
 import { MatFormField, MatLabel, MatFormFieldControl } from '@angular/material/form-field';
 import { ProfileService } from '../../services/profile.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { User } from '../../services/user.service';
+import { AuthService } from '../../services/auth.service';
 
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [AccountComponent,ProfileComponent,MatCard,MatTabsModule,MatFormField,MatLabel,FormsModule,ReactiveFormsModule,MatInputModule],
+  imports: [MatTabsModule,MatFormField,MatLabel,FormsModule,ReactiveFormsModule,MatInputModule],
   templateUrl: './profile.component.html',
   styleUrl: './profile.component.scss'
 })

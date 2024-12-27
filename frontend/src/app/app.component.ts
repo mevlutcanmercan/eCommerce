@@ -22,7 +22,9 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-
+    if (this.authService.isTokenExpired()) {
+      this.authService.logout();
+    }
     this.route.queryParams.subscribe(params => {
       const dialog = params['d'];
       if (dialog) {

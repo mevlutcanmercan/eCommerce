@@ -95,7 +95,7 @@ router.post('/register', async (req, res) => {
   
       res.status(201).json({
         success: true,
-        message: 'Kullanıcı başarıyla kaydedildi!',
+        message: 'User registered successfully',
         user: {
           id: newUser._id,
           userName: newUser.userName,
