@@ -4,6 +4,7 @@ import { Category, CategoryService, UpperCategory } from '../../services/categor
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { BehaviorSubject, combineLatest } from 'rxjs';
+import { FilterComponent } from '../filter/filter.component';
 
 @Component({
   selector: 'app-categoryselection',
@@ -19,43 +20,46 @@ export class CategoryselectionComponent implements OnInit {
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
 
-  constructor(private categoryService: CategoryService, private router: Router, private authService: AuthService) { }
+  constructor(private categoryService: CategoryService, private router: Router, private authService: AuthService ) { }
 
   ngOnInit(): void {
+    this.loadCategories();
 
+    this.authService.isAdmin.subscribe((isAdmin: boolean) => {
+      this.isAdmin = isAdmin;
+    });
+  }
+
+  loadCategories(): void {
     this.categoryService.getUpperCategories().subscribe(
       (categories: UpperCategory[]) => {
         this.upperCategories = categories;
 
-        this.upperCategories.forEach(upperCategory => {
+        this.upperCategories.forEach((upperCategory) => {
           const upperCategories_id = upperCategory._id;
           this.categoryService.getSubcategories(upperCategories_id).subscribe(
             (subcategories: Category[]) => {
               this.subcategories[upperCategories_id] = subcategories;
             },
-            error => {
+            (error) => {
               console.error('Error fetching subcategories:', error);
             }
           );
         });
       },
-      error => {
+      (error) => {
         console.error('Error fetching upper categories:', error);
       }
     );
   }
 
   toggleDropdown(upperCategoryId: string): void {
-    if (this.selectedUpperCategoryId === upperCategoryId) {
-      this.selectedUpperCategoryId = undefined;
-    } else {
-      this.selectedUpperCategoryId = upperCategoryId;
-    }
+    this.selectedUpperCategoryId =
+      this.selectedUpperCategoryId === upperCategoryId ? undefined : upperCategoryId;
   }
 
   onSubcategoryClick(category: string): void {
- {
-    }  if (this.isAdmin) {
+    if (this.isAdmin) {
       this.router.navigate(['admin/products'], { queryParams: { category } });
     } else {
       this.router.navigate(['/products'], { queryParams: { category } });

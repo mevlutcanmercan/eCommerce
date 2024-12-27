@@ -1,0 +1,80 @@
+router.get('/featurebyproduct', async (req, res) => {
+    const { featureID, featureValue } = req.query;
+  
+    if (!featureID || !featureValue) {
+      return res.status(400).json({
+        success: false,
+        message: 'featureID and featureValue are required.',
+      });
+    }
+
+  
+    try {
+      const productFeatures = await ProductFeatures.find({
+        featureID: featureID,
+        featureValue: featureValue,
+      }).populate('productID'); // Ürün bilgilerini al
+  
+      if (productFeatures.length === 0) {
+        return res.status(404).json({
+          success: false,
+          message: `No products found for feature ID ${featureID} and value ${featureValue}.`,
+        });
+      }
+  
+      const products = productFeatures.map((pf) => pf.productID);
+  
+      res.status(200).json({
+        success: true,
+        data: products,
+      });
+    } catch (error) {
+      console.error('Error fetching products by feature:', error);
+      res.status(500).json({
+        success: false,
+        message: 'Failed to fetch products.',
+        error: error.message,
+      });
+    }
+  });
+  
+
+  
+
+  router.get('/products/category/:categoryId', async (req, res) => {
+    const { categoryId } = req.params;
+    const filters = req.query.filters ? JSON.parse(req.query.filters) : {};
+  
+    try {
+      // Ürünleri kategorisine göre filtrele
+      let query = { productCategoryID: categoryId };
+  
+      // Özellik filtrelerini ekle
+      if (Object.keys(filters).length > 0) {
+        const filterConditions = [];
+  
+        for (const [featureID, values] of Object.entries(filters)) {
+          filterConditions.push({
+            featureID: featureID,
+            featureValue: { $in: values }, // Seçilen değerlerden biri eşleşmeli
+          });
+        }
+  
+        const matchingProducts = await ProductFeatures.find({
+          $or: filterConditions,
+        }).distinct('productID'); // Eşleşen ürün ID'lerini al
+  
+        query._id = { $in: matchingProducts }; // Ürünleri bu ID'lere göre filtrele
+      }
+
+      const products = await Product.find(query);
+      res.status(200).json({ success: true, data: products });
+    } catch (error) {
+      console.error('Error fetching filtered products:', error);
+      res.status(500).json({ error: 'Failed to fetch filtered products' });
+    }
+  });
+
+
+
+  

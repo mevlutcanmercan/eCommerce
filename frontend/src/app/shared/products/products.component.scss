@@ -2,13 +2,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  gap: 10px;
 }
 
 .product-card {
   width: 300px;
-  margin: 10px;
-  background: #ffff;
-  outline: 2px solid #ff7300;}
+  background: #fff;
+  outline: 2px solid #ff7300;
+}
 
   .paginator-style {
     position: relative;
@@ -67,7 +68,23 @@ mat-card-title {
   max-height: 100%;
   object-fit: contain;
 }
-.allProducts{
+
+.allProducts {
+  margin-bottom: 1rem;
   border-radius: 52px;
   justify-content: center;
+}
+
+.product-container {
+  display: flex;
+  flex-direction: column;
+  transition: padding-left 0.5s ease;
+}
+
+.product-container.with-filter {
+  padding-left: 260px;
+}
+
+.product-container:not(.with-filter) {
+  padding-left: 0;
 }

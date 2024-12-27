@@ -1,1 +1,14 @@
-<div class="filter-container"></div>
+<div class="filter-container">
+  <div *ngFor="let feature of features" class="feature-group">
+    <h4>{{ feature.featureName }}</h4>
+    <div *ngFor="let value of feature.featureValues">
+      <mat-checkbox class="checkbox"
+        [value]="value"
+        (change)="onCheckboxChange(feature._id, value, $event.checked)"
+      >
+        {{ value }}
+      </mat-checkbox>
+    </div>
+  </div>
+</div>
+

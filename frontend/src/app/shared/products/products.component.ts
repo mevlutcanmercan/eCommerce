@@ -6,7 +6,7 @@ import { Product, ProductService } from '../../services/product.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';
 import { MatCard, MatCardContent, MatCardHeader, MatCardActions, MatCardTitle } from '@angular/material/card';
 import { MatToolbar } from '@angular/material/toolbar';
-import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
+import { CommonModule, CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
@@ -17,6 +17,7 @@ import { ProductEditDialogComponent } from '../../admin/product-edit-dialog/prod
 import { MESSAGES } from '../../constants';
 import { SearchService } from '../../services/search.service';
 import { FilterComponent } from "../filter/filter.component";
+import { FilterService } from '../../services/filter.service';
 
 
 @Component({
@@ -24,7 +25,7 @@ import { FilterComponent } from "../filter/filter.component";
     standalone: true,
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',
-    imports: [MatPaginator, MatCard, MatToolbar, MatCardHeader, MatCardHeader, MatCardContent, MatCardActions, MatCardTitle, CurrencyPipe, NgFor, NgIf, MatButton, MatIcon, CategoryselectionComponent, MatInputModule, FilterComponent]
+    imports: [MatPaginator, MatCard, MatToolbar, MatCardHeader, MatCardHeader, MatCardContent, MatCardActions, MatCardTitle, CurrencyPipe, NgFor, NgIf, MatButton, CategoryselectionComponent, MatInputModule, FilterComponent,CommonModule]
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
@@ -44,6 +45,7 @@ export class ProductsComponent implements OnInit {
     private snackbarService: SnackbarService,
      private authService: AuthService,
      private searchService: SearchService,
+     private filterService: FilterService,
      private dialog: MatDialog
     ) { }
 
@@ -94,6 +96,9 @@ export class ProductsComponent implements OnInit {
       );
     }
 
+    isCategorySelected(): boolean {
+      return !!this.selectedCategoryId;
+    }
 
   loadProducts(): void {
     if (this.selectedCategoryId) {
@@ -117,6 +122,44 @@ export class ProductsComponent implements OnInit {
       );
     }
   }
+
+  applyFilters(filters: { [key: string]: string[] }): void {
+    const cleanFilters = Object.fromEntries(
+      Object.entries(filters)
+        .filter(([_, values]) => values.length > 0)
+        .map(([key, values]) => [
+          key,
+          values.map((v) => v.replace(/^\["|"\]$/g, '').trim()),
+        ])
+    );
+    console.log('Sending Filters:', JSON.stringify(cleanFilters));
+
+    if (this.selectedCategoryId) {
+      if (!filters || Object.keys(filters).length === 0) {
+        this.loadProducts();
+      } else {
+        this.filterService.getFilteredProducts(this.selectedCategoryId, cleanFilters).subscribe(
+          (response) => {
+            if (response.success) {
+              if (response.data.length === 0) {
+                this.loadProducts();
+              } else {
+                this.products = response.data;
+                console.log('Data',  response.data);
+              }
+            } else {
+              console.error('Failed to load filtered products:', response);
+            }
+          },
+          (error) => {
+            console.error('Error fetching filtered products:', error);
+          }
+        );
+      }
+    }
+  }
+
+
 
   addToCart(product: Product): void {
     if (this.authService.isLoggedIn && !this.isAdmin) {

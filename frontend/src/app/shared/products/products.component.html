@@ -1,11 +1,21 @@
 <app-categoryselection></app-categoryselection>
-<app-filter></app-filter>
-<div class="product-list">
-  <mat-toolbar class="allProducts">
-    <span >All Products</span>
-    <span class="spacer"></span>
-    <button *ngIf="isAdmin" mat-button (click)="addProduct()">Ürün Ekle</button>
-  </mat-toolbar>
+<mat-toolbar class="allProducts">
+  <span>All Products</span>
+  <span class="spacer"></span>
+  <button *ngIf="isAdmin" mat-button (click)="addProduct()">Ürün Ekle</button>
+</mat-toolbar>
+<div class="product-container" [ngClass]="{'with-filter': isCategorySelected()}">
+
+  <div class="content-wrapper">
+
+    <app-filter
+    class="filter"
+    *ngIf="isCategorySelected()"
+    [categoryId]="selectedCategoryId ?? ''"  (filtersApplied)="applyFilters($event)">
+  </app-filter>
+
+
+    <div class="product-list">
     <mat-card *ngFor="let product of products" class="product-card">
       <div (click)="onProductClick(product._id)">
     <mat-card-header >
@@ -30,4 +40,5 @@
                [pageSizeOptions]="[5, 10, 25, 100]"
                (page)="onPageChange($event)">
 </mat-paginator>
+
 

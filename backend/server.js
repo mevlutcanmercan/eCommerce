@@ -13,6 +13,7 @@ const commentRoutes = require('./routes/commentRoutes');
 const adminRoutes = require('./routes/adminRoutes');
 const searchRoutes = require('./routes/searchRoutes');
 const brandsRoutes = require('./routes/brandsRoutes');  
+const featureRoutes = require('./routes/featureRoutes');  
 
 const app = express();
 const PORT = 3000;
@@ -35,6 +36,7 @@ app.use('', commentRoutes);
 app.use('', adminRoutes);
 app.use('', searchRoutes);
 app.use('', brandsRoutes);
+app.use('', featureRoutes);
 
 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
