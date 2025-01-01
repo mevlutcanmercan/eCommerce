@@ -2,7 +2,8 @@ import { ProductService ,Product} from './../../services/product.service';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../services/card.service';
+import { UserService, User } from '../../services/user.service';
 
 @Component({
   selector: 'app-card',
@@ -14,10 +15,11 @@ import { CartService } from '../../services/cart.service';
 export class CardComponent implements OnInit {
   cardForm: FormGroup;
   isFlipped: boolean = false;
-  cartItems: Product[] = [];  // Store cart items
-  totalAmount: number = 0;    // Total price
+  cartItems: Product[] = [];
+  totalAmount: number = 0;
+  buyer: any;
 
-  constructor(private fb: FormBuilder, private cartService: CartService, private http: HttpClient,private product: ProductService) {
+  constructor(private fb: FormBuilder, private cartService: CartService, private http: HttpClient,private product: ProductService, private userService: UserService) {
     this.cardForm = this.fb.group({
       cardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
       cardName: ['', Validators.required],
@@ -28,10 +30,13 @@ export class CardComponent implements OnInit {
   }
 
   ngOnInit() {
-    // Subscribe to cart items
-    this.cartService.cartItems$.subscribe((items: Product[]) => {
+    this.cartService.cartItems.subscribe((items: Product[]) => {
       this.cartItems = items;
       this.totalAmount = this.cartItems.reduce((total, item) => total + (item.productPrice * item.count), 0);
+    });
+
+    this.userService.getCurrentUser().subscribe((user) => {
+      this.buyer = user;
     });
   }
 
@@ -41,38 +46,38 @@ export class CardComponent implements OnInit {
 
   onSubmit() {
     const paymentData = {
-      price: parseFloat(this.totalAmount.toFixed(2)), // Sayıya dönüştür
-      paidPrice: parseFloat(this.totalAmount.toFixed(2)), // Sayıya dönüştür
+      price: parseFloat(this.totalAmount.toFixed(2)),
+      paidPrice: parseFloat(this.totalAmount.toFixed(2)),
       currency: 'TRY',
-      basketId: 'B67832', // Static basket ID, can be dynamic
+      basketId: 'B67832',
       paymentCard: {
         cardHolderName: this.cardForm.get('cardName')?.value,
         cardNumber: this.cardForm.get('cardNumber')?.value,
         expireMonth: this.cardForm.get('cardExpiryMonth')?.value,
         expireYear: this.cardForm.get('cardExpiryYear')?.value,
         cvc: this.cardForm.get('cardCvc')?.value,
-        registerCard: '0' // Don't register the card
+        registerCard: '0'
       },
       buyer: {
-        id: 'BY789', // Static buyer ID, can be dynamic
-        name: 'John',
-        surname: 'Doe',
-        identityNumber: '74300864791', // Static identity number
-        email: 'johndoe@example.com',
-        gsmNumber: '+905350000000',
-        registrationAddress: 'Sample Address',
-        ip: '85.34.78.112', // Can be dynamic
-        city: 'Istanbul',
-        country: 'Turkey'
+        id: this.buyer?._id,
+        name: this.buyer?.userName,
+        surname: this.buyer?.userSurname,
+        identityNumber: this.buyer?.userTC,
+        email: this.buyer?.userMail,
+        gsmNumber: this.buyer?.userTel,
+        registrationAddress: this.buyer?.address || 'Sample Address',
+        ip: '85.34.78.112',
+        city: this.buyer?.city || 'Istanbul',
+        country: this.buyer?.country || 'Turkey'
       },
       shippingAddress: {
-        contactName: 'John Doe',
+        contactName: this.cardForm.get('cardName')?.value,
         city: 'Istanbul',
         country: 'Turkey',
         address: 'Sample Shipping Address'
       },
       billingAddress: {
-        contactName: 'John Doe',
+        contactName: this.cardForm.get('cardName')?.value,
         city: 'Istanbul',
         country: 'Turkey',
         address: 'Sample Billing Address'

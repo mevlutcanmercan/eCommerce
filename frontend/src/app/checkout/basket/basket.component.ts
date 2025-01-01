@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../services/card.service';
 import { CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { Product} from '../../services/product.service';
 import { MatButtonModule } from '@angular/material/button';
@@ -23,7 +23,7 @@ export class BasketComponent implements OnInit{
   constructor(private cartService: CartService,private dialog:MatDialog) {}
 
   ngOnInit(): void {
-    this.cartService.cartItems$.subscribe(items => {
+    this.cartService.cartItems.subscribe(items => {
       this.cartItems = items;
       this.calculateTotal();
     });

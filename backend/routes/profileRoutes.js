@@ -7,8 +7,8 @@ const router = express.Router();
 
 router.get('/profile', authenticate, async (req, res) => {
   try {
-    const userId = req.user.id; // req.user._id yerine req.user.id kullanın
-    console.log('Decoded User ID:', userId); // Hangi ID döndüğünü görmek için
+    const userId = req.user.id; 
+    console.log('Decoded User ID:', userId); 
     const user = await users.findById(userId).select('-userPassword');
     if (!user) {
       return res.status(404).json({ message: 'Kullanıcı bulunamadı!' });

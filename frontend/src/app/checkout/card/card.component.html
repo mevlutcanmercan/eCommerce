@@ -29,7 +29,7 @@
 <form [formGroup]="cardForm" (ngSubmit)="onSubmit()">
   <div>
     <label for="cardNumber">Kart Numarası</label>
-    <input type="text" id="cardNumber" formControlName="cardNumber" (focus)="flipCard()" (blur)="flipCard()">
+    <input type="text" id="cardNumber" formControlName="cardNumber" >
   </div>
 
   <div>

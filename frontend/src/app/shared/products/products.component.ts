@@ -1,6 +1,6 @@
 import { CategoryselectionComponent } from '../categoryselection/categoryselection.component';
 import { AuthService } from '../../services/auth.service';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../services/card.service';
 import { Component, OnInit } from '@angular/core';
 import { Product, ProductService } from '../../services/product.service';
 import {MatPaginator, PageEvent} from '@angular/material/paginator';

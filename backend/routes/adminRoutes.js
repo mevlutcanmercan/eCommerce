@@ -1,5 +1,6 @@
 const express = require('express');
 const Product = require('../models/products');
+const Users = require('../models/users')
 const { authenticate, authorizeAdmin } = require('./middlewares/auth');
 
 const router = express.Router();
@@ -93,20 +94,20 @@ router.get('/admin/products', authenticate, authorizeAdmin, async (req, res) => 
         return res.status(404).json({ error: 'Product not found' });
       }
   
-      res.json({ message: 'Product deleted successfully' });
+      res.status(201).json({ message: 'Product deleted successfully', deletedProduct });
     } catch (error) {
       console.error('Error deleting product:', error);
       res.status(500).json({ error: 'Failed to delete product' });
     }
   });
-  /*
-  router.get('/admin/users', async (req, res) => {
+
+  router.get('/admin/users', authenticate, authorizeAdmin, async (req, res) => {
     try {
-      const users = await users.find();
-      res.json(users);
+      const users = await Users.find();
+      res.status(200).json(users); 
     } catch (err) {
       res.status(500).json({ message: err.message });
     }
   });
-  */ // Bu ne ???
+ 
   module.exports = router;

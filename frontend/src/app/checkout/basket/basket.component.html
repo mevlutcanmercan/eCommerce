@@ -3,7 +3,7 @@
       <mat-card *ngFor="let item of cartItems">
         <mat-card-header>
           <mat-card-title>{{ item.productName }}</mat-card-title>
-          <mat-card-subtitle>{{ item.productDescription | currency: 'TRY':'₺' }}</mat-card-subtitle>
+          <mat-card-subtitle>{{ item.productPrice | currency: 'TRY':'₺' }}</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
           <div class="cart-item-details">

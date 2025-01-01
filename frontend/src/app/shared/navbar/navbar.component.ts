@@ -11,7 +11,7 @@ import { LoginComponent } from '../login/login.component';
 import { RegisterComponent } from '../../user/register/register.component';
 import { Router, NavigationEnd } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { CartService } from '../../services/cart.service';
+import { CartService } from '../../services/card.service';
 import { Product } from '../../services/product.service';
 import { MatBadgeModule } from '@angular/material/badge';
 import { AdminItem, ContentService, UserItem } from '../../services/content.service';
@@ -70,7 +70,7 @@ export class NavbarComponent implements OnInit {
       }
     });
 
-    this.cartService.cartItems$.subscribe((items: Product[]) => {
+    this.cartService.cartItems.subscribe((items: Product[]) => {
       this.cartItems = items;
       this.cartItemCount = items.reduce((count, item) => count + item.count, 0);
     });

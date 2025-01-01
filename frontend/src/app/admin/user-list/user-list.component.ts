@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../services/user.service';
 import { User } from '../../services/user.service';
 import { MatCellDef, MatColumnDef, MatTableModule } from '@angular/material/table'
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-user-list',
@@ -20,4 +21,5 @@ export class UserListComponent implements OnInit {
       this.users = users;
     });
   }
+
 }

@@ -13,7 +13,7 @@ import { CommonModule, NgFor, NgForOf } from '@angular/common';
 })
 export class FilterComponent implements OnInit {
   @Input() categoryId!: string;
-  @Output() filtersApplied = new EventEmitter<{ [key: string]: string[] }>(); // Filtreleri dışarıya iletir
+  @Output() filtersApplied = new EventEmitter<{ [key: string]: string[] }>();
   features: Features[] = [];
   selectedFilters: { [key: string]: string[] } = {};
 
@@ -73,7 +73,7 @@ export class FilterComponent implements OnInit {
       }
     }
 
-    // Filtreleri dışarıya ilet
+    // Filtreleri Dışarıya ilet
     this.filtersApplied.emit(this.selectedFilters);
   }
 

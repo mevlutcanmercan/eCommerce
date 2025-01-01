@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
 })
 export class CartService {
   private cartItemsSubject = new BehaviorSubject<Product[]>([]);
-  cartItems$ = this.cartItemsSubject.asObservable();
+  cartItems = this.cartItemsSubject.asObservable();
   private currentUserId: string | null = null;
 
   constructor(private auth: AuthService) {
