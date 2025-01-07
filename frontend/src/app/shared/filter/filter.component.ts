@@ -5,11 +5,10 @@ import { Features, FilterService } from '../../services/filter.service';
 import { CommonModule, NgFor, NgForOf } from '@angular/common';
 
 @Component({
-  selector: 'app-filter',
-  standalone: true,
-  imports: [ReactiveFormsModule,MatCheckboxModule,NgFor,NgForOf,CommonModule],
-  templateUrl: './filter.component.html',
-  styleUrl: './filter.component.scss'
+    selector: 'app-filter',
+    imports: [ReactiveFormsModule, MatCheckboxModule, NgFor, NgForOf, CommonModule],
+    templateUrl: './filter.component.html',
+    styleUrl: './filter.component.scss'
 })
 export class FilterComponent implements OnInit {
   @Input() categoryId!: string;

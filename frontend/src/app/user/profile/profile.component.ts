@@ -9,11 +9,10 @@ import { AuthService } from '../../services/auth.service';
 
 
 @Component({
-  selector: 'app-profile',
-  standalone: true,
-  imports: [MatTabsModule,MatFormField,MatLabel,FormsModule,ReactiveFormsModule,MatInputModule],
-  templateUrl: './profile.component.html',
-  styleUrl: './profile.component.scss'
+    selector: 'app-profile',
+    imports: [MatTabsModule, MatFormField, MatLabel, FormsModule, ReactiveFormsModule, MatInputModule],
+    templateUrl: './profile.component.html',
+    styleUrl: './profile.component.scss'
 })
 export class ProfileComponent implements OnInit {
   user?: User;

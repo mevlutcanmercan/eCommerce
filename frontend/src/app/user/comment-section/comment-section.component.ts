@@ -17,16 +17,14 @@ import e from 'express';
 import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
-  selector: 'app-comment-section',
-  standalone: true,
-  imports: [NgIf,NgFor,ReactiveFormsModule,FormsModule,CommonModule,
-    MatCard,MatCardTitle,MatCardHeader,MatCardContent,
-    MatList,MatListItem,MatFormField,MatLabel,MatInput,MatButton,
-    MatDivider,MatExpansionModule,MatError,MatIcon
-
-  ],
-  templateUrl: './comment-section.component.html',
-  styleUrl: './comment-section.component.scss'
+    selector: 'app-comment-section',
+    imports: [NgIf, NgFor, ReactiveFormsModule, FormsModule, CommonModule,
+        MatCard, MatCardTitle, MatCardHeader, MatCardContent,
+        MatList, MatListItem, MatFormField, MatLabel, MatInput, MatButton,
+        MatDivider, MatExpansionModule, MatError, MatIcon
+    ],
+    templateUrl: './comment-section.component.html',
+    styleUrl: './comment-section.component.scss'
 })
 export class CommentSectionComponent implements OnInit, OnChanges {
   @Input()

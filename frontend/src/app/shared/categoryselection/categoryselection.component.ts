@@ -7,11 +7,10 @@ import { BehaviorSubject, combineLatest } from 'rxjs';
 import { FilterComponent } from '../filter/filter.component';
 
 @Component({
-  selector: 'app-categoryselection',
-  standalone: true,
-  imports: [NgFor, NgForOf, NgIf],
-  templateUrl: './categoryselection.component.html',
-  styleUrl: './categoryselection.component.scss'
+    selector: 'app-categoryselection',
+    imports: [NgFor, NgForOf, NgIf],
+    templateUrl: './categoryselection.component.html',
+    styleUrl: './categoryselection.component.scss'
 })
 export class CategoryselectionComponent implements OnInit {
   upperCategories: UpperCategory[] = [];

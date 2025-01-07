@@ -10,11 +10,10 @@ import { MatButton } from '@angular/material/button';
 
 
 @Component({
-  selector: 'app-product-edit-dialog',
-  standalone: true,
-  imports: [ReactiveFormsModule,FormsModule,MatInput,MatLabel,MatFormField,MatSelectModule,NgFor,NgForOf,MatButton],
-  templateUrl: './product-edit-dialog.component.html',
-  styleUrl: './product-edit-dialog.component.scss'
+    selector: 'app-product-edit-dialog',
+    imports: [ReactiveFormsModule, FormsModule, MatInput, MatLabel, MatFormField, MatSelectModule, NgFor, NgForOf, MatButton],
+    templateUrl: './product-edit-dialog.component.html',
+    styleUrl: './product-edit-dialog.component.scss'
 })
 export class ProductEditDialogComponent {
   editForm: FormGroup;

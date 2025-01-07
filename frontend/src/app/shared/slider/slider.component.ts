@@ -4,12 +4,11 @@ import { SwiperOptions } from 'swiper/types';
 import { CommonModule, NgFor, NgForOf } from '@angular/common';
 
 @Component({
-  selector: 'app-slider',
-  standalone: true,
-  imports: [CommonModule, NgFor,NgForOf],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA],
-  templateUrl: './slider.component.html',
-  styleUrl: './slider.component.scss'
+    selector: 'app-slider',
+    imports: [CommonModule, NgFor, NgForOf],
+    schemas: [CUSTOM_ELEMENTS_SCHEMA],
+    templateUrl: './slider.component.html',
+    styleUrl: './slider.component.scss'
 })
 
 export class SliderComponent {

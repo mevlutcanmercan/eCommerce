@@ -22,10 +22,9 @@ import { FilterService } from '../../services/filter.service';
 
 @Component({
     selector: 'app-products',
-    standalone: true,
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',
-    imports: [MatPaginator, MatCard, MatToolbar, MatCardHeader, MatCardHeader, MatCardContent, MatCardActions, MatCardTitle, CurrencyPipe, NgFor, NgIf, MatButton, CategoryselectionComponent, MatInputModule, FilterComponent,CommonModule]
+    imports: [MatPaginator, MatCard, MatToolbar, MatCardHeader, MatCardHeader, MatCardContent, MatCardActions, MatCardTitle, CurrencyPipe, NgFor, NgIf, MatButton, CategoryselectionComponent, MatInputModule, FilterComponent, CommonModule]
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];

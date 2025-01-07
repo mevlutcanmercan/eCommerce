@@ -6,11 +6,10 @@ import { CardComponent } from "../card/card.component";
 import { NgIf } from '@angular/common';
 
 @Component({
-  selector: 'app-stepper',
-  standalone: true,
-  imports: [MatStepperModule, BasketComponent, CardComponent,PaymentMethodComponent,NgIf],
-  templateUrl: './stepper.component.html',
-  styleUrls: ['./stepper.component.scss']
+    selector: 'app-stepper',
+    imports: [MatStepperModule, BasketComponent, CardComponent, PaymentMethodComponent, NgIf],
+    templateUrl: './stepper.component.html',
+    styleUrls: ['./stepper.component.scss']
 })
 export class StepperComponent {
   selectedPaymentMethod: string = '';

@@ -5,11 +5,10 @@ import { MatCard, MatCardContent, MatCardTitle } from '@angular/material/card';
 import { error } from 'console';
 
 @Component({
-  selector: 'app-random-products',
-  standalone: true,
-  imports: [NgFor,NgIf,MatCardContent,MatCardTitle,MatCard,CurrencyPipe],
-  templateUrl: './random-products.component.html',
-  styleUrl: './random-products.component.scss'
+    selector: 'app-random-products',
+    imports: [NgFor, NgIf, MatCardContent, MatCardTitle, MatCard, CurrencyPipe],
+    templateUrl: './random-products.component.html',
+    styleUrl: './random-products.component.scss'
 })
 export class RandomProductsComponent implements OnInit{
   randomProducts: Product[] = [];

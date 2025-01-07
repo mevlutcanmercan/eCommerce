@@ -8,11 +8,10 @@ import { Router } from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-search',
-  standalone: true,
-  imports: [ReactiveFormsModule,FormsModule,MatInputModule,NgForOf,NgIf,ReactiveFormsModule,MatIcon],
-  templateUrl: './search.component.html',
-  styleUrl: './search.component.scss'
+    selector: 'app-search',
+    imports: [ReactiveFormsModule, FormsModule, MatInputModule, NgForOf, NgIf, ReactiveFormsModule, MatIcon],
+    templateUrl: './search.component.html',
+    styleUrl: './search.component.scss'
 })
 export class SearchComponent {
   searchQuery: string = '';

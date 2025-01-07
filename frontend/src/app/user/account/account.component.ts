@@ -11,11 +11,10 @@ import { MESSAGES } from '../../constants';
 import { ProfileComponent } from "../profile/profile.component";
 
 @Component({
-  selector: 'app-account',
-  standalone: true,
-  imports: [MatSidenav, MatSidenavContainer, MatSidenavModule, RouterModule, MatListModule, FormsModule, MatFormFieldModule, NgIf, ProfileComponent],
-  templateUrl: './account.component.html',
-  styleUrl: './account.component.scss'
+    selector: 'app-account',
+    imports: [MatSidenav, MatSidenavContainer, MatSidenavModule, RouterModule, MatListModule, FormsModule, MatFormFieldModule, NgIf, ProfileComponent],
+    templateUrl: './account.component.html',
+    styleUrl: './account.component.scss'
 })
 
 export class AccountComponent {

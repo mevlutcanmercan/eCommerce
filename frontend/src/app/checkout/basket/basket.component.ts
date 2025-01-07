@@ -10,11 +10,10 @@ import { MatDialog } from '@angular/material/dialog';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-basket',
-  standalone: true,
-  imports: [NgFor, NgIf, CurrencyPipe, MatButtonModule, MatIconModule, MatCardModule, MatDividerModule, RouterModule],
-  templateUrl: './basket.component.html',
-  styleUrl: './basket.component.scss'
+    selector: 'app-basket',
+    imports: [NgFor, NgIf, CurrencyPipe, MatButtonModule, MatIconModule, MatCardModule, MatDividerModule, RouterModule],
+    templateUrl: './basket.component.html',
+    styleUrl: './basket.component.scss'
 })
 export class BasketComponent implements OnInit{
   cartItems: Product[] = [];

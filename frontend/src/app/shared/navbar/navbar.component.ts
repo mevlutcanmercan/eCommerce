@@ -19,21 +19,20 @@ import { SearchComponent } from "../search/search.component";
 
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.scss'],
-  standalone: true,
-  imports: [
-    MatToolbarModule,
-    MatButtonModule,
-    MatIconModule,
-    MatSidenavModule,
-    MatFormFieldModule,
-    MatMenuModule,
-    CommonModule,
-    MatBadgeModule,
-    SearchComponent
-],
+    selector: 'app-navbar',
+    templateUrl: './navbar.component.html',
+    styleUrls: ['./navbar.component.scss'],
+    imports: [
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatSidenavModule,
+        MatFormFieldModule,
+        MatMenuModule,
+        CommonModule,
+        MatBadgeModule,
+        SearchComponent
+    ]
 })
 export class NavbarComponent implements OnInit {
   navigationItems: AdminItem[] | UserItem[] = [];

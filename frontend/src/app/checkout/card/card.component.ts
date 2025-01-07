@@ -6,11 +6,10 @@ import { CartService } from '../../services/card.service';
 import { UserService, User } from '../../services/user.service';
 
 @Component({
-  selector: 'app-card',
-  standalone: true,
-  imports:[FormsModule,ReactiveFormsModule],
-  templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+    selector: 'app-card',
+    imports: [FormsModule, ReactiveFormsModule],
+    templateUrl: './card.component.html',
+    styleUrls: ['./card.component.scss']
 })
 export class CardComponent implements OnInit {
   cardForm: FormGroup;

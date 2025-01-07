@@ -8,16 +8,15 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTableModule } from '@angular/material/table';
 @Component({
-  selector: 'app-comment-management',
-  standalone: true,
-  imports: [    CommonModule,
-    ReactiveFormsModule,
-    FormsModule,
-    MatButtonModule,
-    MatSnackBarModule,
-    MatTableModule],
-  templateUrl: './comment-management.component.html',
-  styleUrl: './comment-management.component.scss'
+    selector: 'app-comment-management',
+    imports: [CommonModule,
+        ReactiveFormsModule,
+        FormsModule,
+        MatButtonModule,
+        MatSnackBarModule,
+        MatTableModule],
+    templateUrl: './comment-management.component.html',
+    styleUrl: './comment-management.component.scss'
 })
 export class CommentManagementComponent implements OnInit {
   comments: Comment[] = [];

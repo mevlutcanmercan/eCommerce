@@ -7,11 +7,10 @@ import { MatCard, MatCardTitle } from '@angular/material/card';
 import { CommentSectionComponent } from "../comment-section/comment-section.component";
 
 @Component({
-  selector: 'app-product-details',
-  standalone: true,
-  imports: [NgIf, CurrencyPipe, MatButton, MatCard, MatCardTitle, CommentSectionComponent],
-  templateUrl: './product-details.component.html',
-  styleUrl: './product-details.component.scss'
+    selector: 'app-product-details',
+    imports: [NgIf, CurrencyPipe, MatButton, MatCard, MatCardTitle, CommentSectionComponent],
+    templateUrl: './product-details.component.html',
+    styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent implements OnInit {
   product: Product | null = null;

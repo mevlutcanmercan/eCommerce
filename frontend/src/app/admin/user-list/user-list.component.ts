@@ -5,11 +5,10 @@ import { MatCellDef, MatColumnDef, MatTableModule } from '@angular/material/tabl
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-user-list',
-  templateUrl: './user-list.component.html',
-  standalone:true,
-  imports: [MatTableModule,MatColumnDef,MatCellDef],
-  styleUrls: ['./user-list.component.scss']
+    selector: 'app-user-list',
+    templateUrl: './user-list.component.html',
+    imports: [MatTableModule, MatColumnDef, MatCellDef],
+    styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent implements OnInit {
   users: User[] = [];
