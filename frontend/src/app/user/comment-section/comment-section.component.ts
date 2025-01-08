@@ -18,9 +18,10 @@ import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
     selector: 'app-comment-section',
+    standalone:true,
     imports: [NgIf, NgFor, ReactiveFormsModule, FormsModule, CommonModule,
-        MatCard, MatCardTitle, MatCardHeader, MatCardContent,
-        MatList, MatListItem, MatFormField, MatLabel, MatInput, MatButton,
+        MatCard, MatCardTitle, MatCardContent,
+         MatListItem, MatFormField, MatLabel, MatInput, MatButton,
         MatDivider, MatExpansionModule, MatError, MatIcon
     ],
     templateUrl: './comment-section.component.html',

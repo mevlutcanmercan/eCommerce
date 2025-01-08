@@ -12,7 +12,7 @@ import { ProfileComponent } from "../profile/profile.component";
 
 @Component({
     selector: 'app-account',
-    imports: [MatSidenav, MatSidenavContainer, MatSidenavModule, RouterModule, MatListModule, FormsModule, MatFormFieldModule, NgIf, ProfileComponent],
+    imports: [MatSidenav, MatSidenavContainer, MatSidenavModule, RouterModule, MatListModule, FormsModule, MatFormFieldModule, NgIf],
     templateUrl: './account.component.html',
     styleUrl: './account.component.scss'
 })

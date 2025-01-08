@@ -2,11 +2,10 @@ import { AdminItem, ContentService, UserItem } from './../services/content.servi
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from "../shared/navbar/navbar.component";
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
-import { SliderComponent } from "../shared/slider/slider.component";
 
 @Component({
     selector: 'app-layout',
-    imports: [NavbarComponent, RouterOutlet, SliderComponent],
+    imports: [NavbarComponent, RouterOutlet],
     template: `
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>

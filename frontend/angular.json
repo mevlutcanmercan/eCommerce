@@ -39,6 +39,10 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
+            "stylePreprocessorOptions": {
+              "sass": {
+                "silenceDeprecations": ["mixed-decls", "color-functions", "global-builtin", "import"]
+              }},
             "outputPath": "dist/frontend",
             "index": "src/index.html",
             "browser": "src/main.ts",
@@ -133,3 +137,4 @@
     "analytics": "f191d272-cd59-4a69-b3b3-78d77115d0a5"
   }
 }
+

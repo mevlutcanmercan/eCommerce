@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { NgForOf, NgIf } from '@angular/common';
 import { SearchService } from '../../services/search.service';
-import { Router } from '@angular/router';
+import { Router} from '@angular/router';
 import { MatIcon } from '@angular/material/icon';
 
 @Component({
