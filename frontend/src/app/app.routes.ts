@@ -1,24 +1,13 @@
-import { Category } from './services/category.service';
-import { RouterModule, Routes} from '@angular/router';
-import { NgModule } from '@angular/core';
+import { provideRouter, Route } from '@angular/router';
+
 import { RoleGuard } from './role.guard';
-import { LayoutComponent } from './layout/layout.component';
-import { ProductsComponent } from './shared/products/products.component';
-import { LoginComponent } from './shared/login/login.component';
-import { RegisterComponent } from './user/register/register.component';
 import { DialogGuard } from './dialog.guard';
-import { AccountComponent } from './user/account/account.component';
 import { ProfileGuard } from './profile.guard';
-import { ProfileComponent } from './user/profile/profile.component';
-import { UserListComponent } from './admin/user-list/user-list.component';
-import { HomeComponent } from './shared/home/home.component';
-import { ProductDetailsComponent } from './user/product-details/product-details.component';
-import { BasketComponent } from './checkout/basket/basket.component';
-import { CommentManagementComponent } from './admin/comment-management/comment-management.component';
-import { CheckoutComponent } from './checkout/checkout.component';
+
+import { LayoutComponent } from './layout/layout.component';
 
 
-export const routes: Routes = [
+export const routes: Route[] = [
   {
     path: '',
     redirectTo: 'home',
@@ -28,41 +17,83 @@ export const routes: Routes = [
     path: '',
     component: LayoutComponent,
     children: [
-      { path: 'home', component: HomeComponent, title:'Home'},
-      { path: 'products', component: ProductsComponent, title:'Products' },
-      { path: 'products/:productId', component: ProductDetailsComponent },
-      { path: 'login', component: LoginComponent, canActivate:[DialogGuard], title:'Login' },
-      { path: 'register', component: RegisterComponent, canActivate:[DialogGuard], title:'Register' },
-      { path: 'basket', component: BasketComponent, title:'Basket' },
-
+      {
+        path: 'home',
+        loadComponent: () => import('./shared/home/home.component').then(m => m.HomeComponent),
+        title: 'Home'
+      },
+      {
+        path: 'products',
+        loadComponent: () => import('./shared/products/products.component').then(m => m.ProductsComponent),
+        title: 'Products'
+      },
+      {
+        path: 'products/:productId',
+        loadComponent: () => import('./user/product-details/product-details.component').then(m => m.ProductDetailsComponent)
+      },
+      {
+        path: 'login',
+        loadComponent: () => import('./shared/login/login.component').then(m => m.LoginComponent),
+        canActivate: [DialogGuard],
+        title: 'Login'
+      },
+      {
+        path: 'register',
+        loadComponent: () => import('./user/register/register.component').then(m => m.RegisterComponent),
+        canActivate: [DialogGuard],
+        title: 'Register'
+      },
+      {
+        path: 'basket',
+        loadComponent: () => import('./checkout/basket/basket.component').then(m => m.BasketComponent),
+        title: 'Basket'
+      },
       {
         path: 'account',
-        component: AccountComponent,
-        title:'Account',
+        loadComponent: () => import('./user/account/account.component').then(m => m.AccountComponent),
         canActivate: [ProfileGuard],
+        title: 'Account',
         children: [
-          { path: 'profile', component: ProfileComponent, title: 'Profile' }
+          {
+            path: 'profile',
+            loadComponent: () => import('./user/profile/profile.component').then(m => m.ProfileComponent),
+            title: 'Profile'
+          }
         ]
       },
-
-        { path: 'checkout', component: CheckoutComponent },
-        { path: '', redirectTo: '/checkout', pathMatch: 'full' },
+      {
+        path: 'checkout',
+        loadComponent: () => import('./checkout/checkout.component').then(m => m.CheckoutComponent)
+      },
       {
         path: 'admin',
         canActivate: [RoleGuard],
         children: [
-          { path: 'home', component: HomeComponent },
-          { path: 'products', component: ProductsComponent , title:'Products' },
-          { path: 'users', component: UserListComponent, title:'Users'  },
-          { path: 'comments', component:CommentManagementComponent, title:'Comments'}
+          {
+            path: 'home',
+            loadComponent: () => import('./shared/home/home.component').then(m => m.HomeComponent)
+          },
+          {
+            path: 'products',
+            loadComponent: () => import('./shared/products/products.component').then(m => m.ProductsComponent),
+            title: 'Products'
+          },
+          {
+            path: 'users',
+            loadComponent: () => import('./admin/user-list/user-list.component').then(m => m.UserListComponent),
+            title: 'Users'
+          },
+          {
+            path: 'comments',
+            loadComponent: () => import('./admin/comment-management/comment-management.component').then(m => m.CommentManagementComponent),
+            title: 'Comments'
+          }
         ]
       }
     ]
   }
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
-})
-export class RoutesModule { }
+export const appRouterProviders = [
+  provideRouter(routes)
+];
