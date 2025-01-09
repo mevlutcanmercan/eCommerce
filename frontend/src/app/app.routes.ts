@@ -31,6 +31,7 @@ export const routes: Route[] = [
         path: 'products/:productId',
         loadComponent: () => import('./user/product-details/product-details.component').then(m => m.ProductDetailsComponent)
       },
+
       {
         path: 'login',
         loadComponent: () => import('./shared/login/login.component').then(m => m.LoginComponent),

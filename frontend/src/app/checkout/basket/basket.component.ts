@@ -50,18 +50,5 @@ export class BasketComponent implements OnInit{
     this.totalAmount = this.cartItems.reduce((total, item) => total + item.productPrice * item.count, 0);
   }
 
-  /*checkoutPopUp(): void {
-    const dialogRef = this.dialog.open(CheckoutComponent, {
-      width: '400px',
-      data: { totalAmount: this.totalAmount }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result === 'confirm') {
-        console.log('Ödeme işlemi başarılı!');
-      }
-    });
-  }*/
-
 
 }

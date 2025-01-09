@@ -85,8 +85,9 @@ export class CardComponent implements OnInit {
         id: item._id,
         name: item.productName,
         category1: item.productCategoryID.toString(),
-        price: parseFloat(item.productPrice.toFixed(2)),
-        itemType: 'PHYSICAL'
+        price: parseFloat((item.productPrice * item.count).toFixed(2)),
+        itemType: 'PHYSICAL',
+        quantity: item.count
       }))
     };
     console.log(paymentData);

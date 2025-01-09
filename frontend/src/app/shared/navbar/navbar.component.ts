@@ -35,7 +35,7 @@ import { SearchComponent } from "../search/search.component";
     ]
 })
 export class NavbarComponent implements OnInit {
-  navigationItems: AdminItem[] | UserItem[] = [];
+  @Input() items: (AdminItem | UserItem)[] = [];
   isLoggedIn: boolean = false;
   isAdmin: boolean = false;
   cartItems: any[] = [];
@@ -81,11 +81,11 @@ export class NavbarComponent implements OnInit {
   }
   updateNavigationItems(): void {
     if (this.isAdmin) {
-      this.navigationItems = this.contentService.AdminItems;
+      this.items = this.contentService.AdminItems;
     } else if (this.isLoggedIn && !this.isAdmin) {
-      this.navigationItems = this.contentService.UserItems;
+      this.items = this.contentService.UserItems;
     } else {
-      this.navigationItems = this.contentService.GuestItems;
+      this.items = this.contentService.GuestItems;
     }
   }
 

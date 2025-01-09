@@ -6,7 +6,7 @@
     <app-search></app-search>
 
     <div class="nav-container">
-      <ng-container *ngFor="let item of navigationItems">
+      <ng-container *ngFor="let item of items">
         <button mat-button
                 (click)="selectItem(item.path)"
                 [ngClass]="item.class">{{ item.text }}</button>
