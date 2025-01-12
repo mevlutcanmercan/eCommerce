@@ -4,13 +4,8 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const Iyzipay = require('iyzipay');
 
+const router = express.Router();
 
-const app = express();
-
-app.use(cors());
-app.use(express.json());
-app.use(bodyParser.json()); 
-app.use(bodyParser.urlencoded({ extended: true })); 
 
 const iyzipay = new Iyzipay({
     apiKey: process.env.IYZICO_API_KEY,
@@ -18,7 +13,7 @@ const iyzipay = new Iyzipay({
     uri: process.env.IYZICO_BASE_URL
 });
 
-app.post('/api/payment', (req, res) => {
+router.post('/api/payment', (req, res) => {
     const { price, paidPrice, currency, basketId, paymentCard, buyer, shippingAddress, billingAddress, basketItems } = req.body;
 
     const request = {
@@ -46,6 +41,4 @@ app.post('/api/payment', (req, res) => {
     });
 });
 
-app.listen(3001, () => {
-    console.log('Server is running on port 3001');
-});
+module.exports = router;
