@@ -22,6 +22,13 @@ html {
   height: 100%;
 
 }
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background: none !important;
+}
+
+.mat-mdc-form-field-focus-overlay {
+  background-color: transparent !important;
+}
 
 @include mat.elevation-classes();
 @include mat.app-background();

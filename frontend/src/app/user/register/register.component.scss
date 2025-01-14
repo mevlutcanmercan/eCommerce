@@ -1,0 +1,124 @@
+body {
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #f7f7f7, #eaeaea);
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #333;
+}
+
+mat-dialog-container {
+  border-radius: 15px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.register-container {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #ffffff;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+mat-label {
+  display: flex !important;
+  align-items: center;
+  justify-content: flex-start;
+  color: #4e54c8;
+  margin-bottom: 20px;
+}
+
+mat-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #4e54c8;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+mat-form-field {
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+mat-form-field input {
+  width: 90%;
+  padding: 12px;
+  border-radius: 15px;
+  border: 1px solid #dcdcdc;
+  background: #f9f9f9;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+mat-form-field input:focus {
+  border-color: #4e54c8;
+  background: #ffffff;
+  outline: none;
+  box-shadow: 0 0 6px rgba(78, 84, 200, 0.5);
+  transform: scale(1.02);
+}
+
+mat-form-field input:hover {
+  border-color: #9a9a9a;
+  background: #fcfcfc;
+}
+
+mat-form-field.mat-focused input {
+  border-color: #4e54c8;
+}
+
+button {
+  width: 50%;
+  left: 25%;
+  padding: 12px;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  align-items: center;
+  position: relative;
+  transition: background-color 0.5s ease;
+}
+
+button:hover {
+  background-color: #a8abcc;
+}
+
+button[mat-raised-button][color="primary"] {
+  background-color: #4853b6;
+  color: #fff;
+}
+
+/* Success and Error Messages */
+.success-message {
+  color: #4caf50;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.error-message {
+  color: #f44336;
+  margin-top: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
