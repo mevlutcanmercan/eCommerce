@@ -4,43 +4,43 @@
     <mat-card-content>
       <form (ngSubmit)="register()">
         <mat-form-field appearance="fill">
-          <input matInput [formControl]="nameFormControl" placeholder="İsim">
-          <mat-error *ngIf="nameFormControl.hasError('required')">İsim gerekli.</mat-error>
+          <input matInput [formControl]="nameFormControl" placeholder="Name">
+          <mat-error *ngIf="nameFormControl.hasError('required')">Name Required.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input matInput [formControl]="surnameFormControl" placeholder="Soyisim">
-          <mat-error *ngIf="surnameFormControl.hasError('required')">Soyisim gerekli.</mat-error>
+          <input matInput [formControl]="surnameFormControl" placeholder="Surname">
+          <mat-error *ngIf="surnameFormControl.hasError('required')">Surname Required.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input matInput [formControl]="tcFormControl" placeholder="TC Kimlik No">
-          <mat-error *ngIf="tcFormControl.hasError('required')">TC gerekli.</mat-error>
-          <mat-error *ngIf="tcFormControl.hasError('pattern')">Geçerli bir TC kimlik no girin.</mat-error>
+          <input matInput [formControl]="tcFormControl" placeholder="TC">
+          <mat-error *ngIf="tcFormControl.hasError('required')">TC Required.</mat-error>
+          <mat-error *ngIf="tcFormControl.hasError('pattern')">Please enter a valid TC.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
           <input matInput [formControl]="emailFormControl" placeholder="Email">
-          <mat-error *ngIf="emailFormControl.hasError('required')">Email gerekli.</mat-error>
-          <mat-error *ngIf="emailFormControl.hasError('email')">Geçerli bir email girin.</mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('required')">Email Required.</mat-error>
+          <mat-error *ngIf="emailFormControl.hasError('email')">Please enter a valid Email.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input matInput [formControl]="telFormControl" placeholder="Telefon">
-          <mat-error *ngIf="telFormControl.hasError('required')">Telefon gerekli.</mat-error>
-          <mat-error *ngIf="telFormControl.hasError('pattern')">Geçerli bir telefon numarası girin.</mat-error>
+          <input matInput [formControl]="telFormControl" placeholder="Tel">
+          <mat-error *ngIf="telFormControl.hasError('required')">Tel Number Required.</mat-error>
+          <mat-error *ngIf="telFormControl.hasError('pattern')">Please enter a valid Tel Number.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input matInput [formControl]="passwordFormControl" type="password" placeholder="Şifre">
-          <mat-error *ngIf="passwordFormControl.hasError('required')">Şifre gerekli.</mat-error>
-          <mat-error *ngIf="passwordFormControl.hasError('minlength')">Şifre en az 6 karakter olmalı.</mat-error>
+          <input matInput [formControl]="passwordFormControl" type="password" placeholder="Password">
+          <mat-error *ngIf="passwordFormControl.hasError('required')">Password Required.</mat-error>
+          <mat-error *ngIf="passwordFormControl.hasError('minlength')">Password must be at least 6 characters.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input matInput [formControl]="confirmPasswordFormControl" type="password" placeholder="Tekrar Şifre">
-          <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">Şifreyi tekrar girin.</mat-error>
-          <mat-error *ngIf="passwordFormControl.value !== confirmPasswordFormControl.value">Şifreler uyuşmuyor.</mat-error>
+          <input matInput [formControl]="confirmPasswordFormControl" type="password" placeholder="Password Again">
+          <mat-error *ngIf="confirmPasswordFormControl.hasError('required')">Password Again.</mat-error>
+          <mat-error *ngIf="passwordFormControl.value !== confirmPasswordFormControl.value">Passwords didn't match.</mat-error>
         </mat-form-field>
 
         <button mat-raised-button color="primary" type="submit">Register</button>

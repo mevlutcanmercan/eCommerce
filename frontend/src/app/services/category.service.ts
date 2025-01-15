@@ -25,6 +25,10 @@ export class CategoryService {
   getCategoriesByID(categoryId: string) : Observable<Category[]>{
     return this.http.get<Category[]>(`${environment.apiUrl}/categories/${categoryId}`);
   }
+
+  getCategoriesByIds(categoryIds: string[]): Observable<Category[]> {
+    return this.http.post<Category[]>(`${environment.apiUrl}/categories/all`, { categoryIds });
+  }
 }
 
 export interface UpperCategory {

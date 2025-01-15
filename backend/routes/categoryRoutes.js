@@ -70,4 +70,24 @@ router.get('/categories', async (req, res) => {
       res.status(500).json({ error: 'Failed to fetch category' });
     }
   });
+
+
+  router.post('/categories/all', async (req, res) => {
+    const { categoryIds } = req.body; 
+  
+    if (!Array.isArray(categoryIds) || categoryIds.length === 0) {
+      return res.status(400).json({ error: 'Invalid categoryIds' });
+    }
+  
+    try {
+      const categories = await Category.find({ _id: { $in: categoryIds } }); 
+      res.json(categories); 
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+      res.status(500).json({ error: 'Failed to fetch categories' });
+    }
+  });
+  
+  router.use(express.json());
+
   module.exports = router;
