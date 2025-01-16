@@ -1,10 +1,9 @@
 import { LINKS } from './../../constants';
 import { Component } from '@angular/core';
-import { NgIcon } from '@ng-icons/core';
 import { LucideAngularModule,Github,Linkedin } from 'lucide-angular';
 @Component({
   selector: 'app-footer',
-  imports: [LucideAngularModule,NgIcon] ,
+  imports: [LucideAngularModule] ,
    templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })

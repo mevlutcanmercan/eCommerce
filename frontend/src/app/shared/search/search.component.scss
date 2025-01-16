@@ -1,11 +1,10 @@
-/* Search Container */
 .search-container {
   position: relative;
   width: 300%;
   max-width: 600px;
   margin: 20px auto;
   text-align: left;
-  left: 250%;
+  left: 450%;
   align-items: center;
   z-index: 1000;
   transition: background 0.3s ease;
@@ -17,7 +16,6 @@
     background: #363636;
   }
 }
-/* Search Input */
 input[type="text"] {
   flex: 1;
   padding: 10px;
@@ -33,9 +31,8 @@ input[type="text"]:focus {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-/* Search Button with Icon */
 .icon-search {
-  padding: 10px;
+  padding: 5px;
   font-size: 22px;
   background: #000000;
   color: white;
@@ -57,7 +54,6 @@ input[type="text"]:focus {
   background: #616161;
 }
 
-/* Search Results Dropdown */
 ul {
   position: absolute;
   width: 100%;
@@ -73,7 +69,6 @@ ul {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Search Result Items */
 li {
   padding: 15px;
   font-size: 16px;
@@ -91,7 +86,6 @@ li:hover {
   background: #f8f9fa;
 }
 
-/* Product and Category Styling */
 .product-name {
   font-size: 16px;
   color: #555;

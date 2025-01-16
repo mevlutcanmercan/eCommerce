@@ -62,7 +62,7 @@ const ADMIN_ITEMS: AdminItem[] = [
   {
     text: 'Comments',
     path: '/admin/comments',
-    class: ''
+    class: 'left'
   }
 ];
 
