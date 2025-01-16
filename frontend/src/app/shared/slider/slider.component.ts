@@ -44,5 +44,12 @@ export class SliderComponent {
         console.error('Failed to fetch random products', error);
       }
     );
-}
+  }
+
+
+    onProductClick(productId: string): void {
+      this.productService.onProductClick(productId)
+
+    }
+
 }

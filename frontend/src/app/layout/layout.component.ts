@@ -2,13 +2,15 @@ import { AdminItem, ContentService, UserItem } from './../services/content.servi
 import { Component, OnInit } from '@angular/core';
 import { NavbarComponent } from "../shared/navbar/navbar.component";
 import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { FooterComponent } from "../shared/footer/footer.component";
 
 @Component({
     selector: 'app-layout',
-    imports: [NavbarComponent, RouterOutlet],
+    imports: [NavbarComponent, RouterOutlet, FooterComponent],
     template: `
   <app-navbar></app-navbar>
   <router-outlet></router-outlet>
+  <app-footer></app-footer>
 `,
     styleUrl: './layout.component.scss'
 })

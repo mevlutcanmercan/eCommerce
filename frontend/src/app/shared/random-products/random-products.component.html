@@ -1,6 +1,9 @@
-<div class="categoryLabel" *ngFor="let product of randomProducts" ><p *ngIf="productCategories[product._id]">{{ productCategories[product._id] }} </p></div>
+<div class="categoryLabel" *ngFor="let product of randomProducts" >
+  <p *ngIf="productCategories[product._id]">{{ productCategories[product._id] }} </p>
+</div>
+
+
 <div class="random-products">
-  <div *ngIf="randomProducts.length === 0">Kategoride Yeterli Ürün Bulunamadı :/</div>
   <div *ngFor="let product of randomProducts" class="product-card" (click)="onProductClick(product._id)">
     <mat-card>
       <mat-card-title>{{ product.productName }}</mat-card-title>
@@ -13,3 +16,6 @@
     </mat-card>
   </div>
 </div>
+
+<div *ngIf="randomProducts.length === 0">Kategoride Yeterli Ürün Bulunamadı :/</div>
+

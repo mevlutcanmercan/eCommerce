@@ -1,7 +1,7 @@
 <swiper-container class="swiper-container" [config]="swiperConfig">
     <ng-container *ngFor="let product of randomProducts">
       <swiper-slide lazy="true">
-        <div class="product-card">
+        <div class="product-card" (click)="onProductClick(product._id)">
         <img [src]="product.productImageURL" alt="{{product.productName}}">
         <h3>{{product.productName}}</h3>
         <p>{{product.productPrice| currency: "₺"}}</p>

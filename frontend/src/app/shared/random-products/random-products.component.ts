@@ -37,7 +37,7 @@ ngOnInit(): void {
 matchProductsToCategories(): void {
 
  const categoryIds = this.randomProducts.map((product) => product.productCategoryID);
-
+if(categoryIds.length>0)
  this.categoryService.getCategoriesByIds(categoryIds).subscribe(
    (categories: Category[]) => {
 
@@ -54,6 +54,9 @@ matchProductsToCategories(): void {
      console.error('Error fetching categories:', error);
    }
  );
+ else{
+   console.log("No categories found for the products");
+ }
 }
 
 onProductClick(productId: string): void {
