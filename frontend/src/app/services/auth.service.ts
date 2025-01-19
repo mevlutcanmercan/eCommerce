@@ -4,6 +4,7 @@
   import { Router } from '@angular/router';
   import { EnvironmentService } from './environment.service';
   import { isBrowser} from '../../../helpers'
+import { User } from './user.service';
   @Injectable({
     providedIn: 'root'
   })
@@ -36,7 +37,7 @@
     }
 
     register(user: any): Observable<any> {
-      return this.http.post(`${this.registerUrl}`, user);
+      return this.http.post<User>(`${this.registerUrl}`, user);
     }
 
     login(credentials: any): Observable<any> {

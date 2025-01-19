@@ -51,8 +51,8 @@ export class LoginComponent {
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
-  login() {
 
+  login() {
     if (this.emailFormControl.invalid || this.passwordFormControl.invalid) {
       this.errorMessage = 'Please fill out the form correctly.';
       return;
@@ -78,8 +78,13 @@ export class LoginComponent {
         }
       },
       error: (error) => {
-        console.error('Login failed', error);
-        this.errorMessage = error.error?.message || 'Login failed. Please check your email and password.';
+        if (error.status === 404) {
+          this.errorMessage = 'Email not found. Please check your email.';
+        } else if (error.status === 401) {
+          this.errorMessage = 'Incorrect password. Please try again.';
+        } else {
+          this.errorMessage = error.error?.message || 'Login failed. Please try again later.';
+        }
       }
     });
   }

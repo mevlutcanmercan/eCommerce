@@ -1,0 +1,20 @@
+
+.mat-stepper-horizontal{
+  background-color: unset;
+  margin-bottom: 20%;
+}
+.header-icon-foreground-color{
+  background-color: skyblue;
+}
+::ng-deep .mat-horizontal-stepper-header-container {
+  background-color:aliceblue;
+  border-radius: 20px;
+  outline: 2px solid #ff7300;
+  margin-bottom: 1%;
+  margin-top: 3px;
+}
+
+button{
+  background-color: aliceblue;
+
+}

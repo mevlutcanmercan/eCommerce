@@ -89,6 +89,7 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+
   selectItem(path: string): void {
     if (path === '/login') {
       this.openLoginDialog();

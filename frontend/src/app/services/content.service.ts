@@ -18,12 +18,13 @@ const USER_ITEMS: UserItem[] = [
     text: 'Products',
     path: '/products',
     class: 'left'
-  },
+  }
+  /*,
   {
     text: 'Account',
     path: '/account',
     class: 'right'
-  }
+ }*/
 ];
 
 const GUEST_ITEMS: UserItem[] = [
@@ -38,10 +39,6 @@ const GUEST_ITEMS: UserItem[] = [
   },
   { text: 'Register',
     path: '/register',
-    class: 'right'
-  },
-  { text: 'ShoppingCart',
-    path: '/basket',
     class: 'right'
   }
 ];

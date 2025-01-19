@@ -1,21 +1,21 @@
 <mat-horizontal-stepper linear>
   <!-- Sepet Adımı -->
-  <mat-step label="Sepet">
+  <mat-step label="Basket">
     <app-basket></app-basket>
-    <button mat-button matStepperNext>Devam Et</button>
+    <button mat-button matStepperNext>Next</button>
   </mat-step>
 
   <!-- Ödeme Yöntemi Adımı -->
-  <mat-step label="Ödeme Yöntemi">
+  <mat-step label="Payment Method">
     <app-payment-method (selectedMethod)="onPaymentMethodSelected($event)"></app-payment-method>
-    <button mat-button matStepperPrevious>Geri</button>
-    <button mat-button matStepperNext>Devam Et</button>
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button matStepperNext>Next</button>
   </mat-step>
 
   <!-- Kart Bilgileri Adımı (Sadece kredi kartı seçildiğinde) -->
-  <mat-step label="Kart Bilgileri" *ngIf="selectedPaymentMethod === 'card'">
+  <mat-step label="Card Info" *ngIf="selectedPaymentMethod === 'card'">
     <app-card></app-card>
-    <button mat-button matStepperPrevious>Geri</button>
-    <button mat-button>Siparişi Tamamla</button>
+    <button mat-button matStepperPrevious>Back</button>
+    <button mat-button>Order</button>
   </mat-step>
 </mat-horizontal-stepper>

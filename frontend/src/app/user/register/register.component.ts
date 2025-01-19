@@ -9,6 +9,7 @@ import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { User } from '../../services/user.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -75,7 +76,7 @@ export class RegisterComponent {
     }
 
     if (this.passwordFormControl.value !== this.confirmPasswordFormControl.value) {
-      this.errorMessage = 'Şifreler uyuşmuyor.';
+      this.errorMessage = 'Passwords dont match.';
       return;
     }
     const user = {

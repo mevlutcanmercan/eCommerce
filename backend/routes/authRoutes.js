@@ -34,7 +34,7 @@ router.post('/login', async (req, res) => {
           userName: user.userName,
           isAdmin: user.isAdmin,
         },
-        process.env.SECRET_KEY || 'kXOAcdo9GyW7mNj3t', // Bu satırı düzelttim
+        process.env.SECRET_KEY || 'kXOAcdo9GyW7mNj3t', 
         { expiresIn: '3h' }
       );
       // Başarılı yanıt

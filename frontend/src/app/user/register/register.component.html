@@ -4,35 +4,35 @@
     <mat-card-content>
       <form (ngSubmit)="register()">
         <mat-form-field appearance="fill">
-          <input matInput [formControl]="nameFormControl" placeholder="Name">
+          <input matInput [formControl]="nameFormControl" [(ngModel)]="name" placeholder="Name">
           <mat-error *ngIf="nameFormControl.hasError('required')">Name Required.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input matInput [formControl]="surnameFormControl" placeholder="Surname">
+          <input matInput [formControl]="surnameFormControl" [(ngModel)]="surname" placeholder="Surname">
           <mat-error *ngIf="surnameFormControl.hasError('required')">Surname Required.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input matInput [formControl]="tcFormControl" placeholder="TC">
+          <input matInput [formControl]="tcFormControl" [(ngModel)]="tc" placeholder="TC">
           <mat-error *ngIf="tcFormControl.hasError('required')">TC Required.</mat-error>
           <mat-error *ngIf="tcFormControl.hasError('pattern')">Please enter a valid TC.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input matInput [formControl]="emailFormControl" placeholder="Email">
+          <input matInput [formControl]="emailFormControl" [(ngModel)]="email" placeholder="Email">
           <mat-error *ngIf="emailFormControl.hasError('required')">Email Required.</mat-error>
           <mat-error *ngIf="emailFormControl.hasError('email')">Please enter a valid Email.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input matInput [formControl]="telFormControl" placeholder="Tel">
+          <input matInput [formControl]="telFormControl" [(ngModel)]="tel" placeholder="Tel">
           <mat-error *ngIf="telFormControl.hasError('required')">Tel Number Required.</mat-error>
           <mat-error *ngIf="telFormControl.hasError('pattern')">Please enter a valid Tel Number.</mat-error>
         </mat-form-field>
 
         <mat-form-field appearance="fill">
-          <input matInput [formControl]="passwordFormControl" type="password" placeholder="Password">
+          <input matInput [formControl]="passwordFormControl" type="password" [(ngModel)]="password" placeholder="Password">
           <mat-error *ngIf="passwordFormControl.hasError('required')">Password Required.</mat-error>
           <mat-error *ngIf="passwordFormControl.hasError('minlength')">Password must be at least 6 characters.</mat-error>
         </mat-form-field>

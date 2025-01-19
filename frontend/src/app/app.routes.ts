@@ -45,11 +45,6 @@ export const routes: Route[] = [
         title: 'Register'
       },
       {
-        path: 'basket',
-        loadComponent: () => import('./checkout/basket/basket.component').then(m => m.BasketComponent),
-        title: 'Basket'
-      },
-      {
         path: 'account',
         loadComponent: () => import('./user/account/account.component').then(m => m.AccountComponent),
         canActivate: [ProfileGuard],

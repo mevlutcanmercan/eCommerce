@@ -24,9 +24,11 @@
 .left {
   text-align: left;
   margin-right: auto;
+  justify-content: flex-start;
 }
 
 .right {
   text-align: right;
   margin-left: 10px;
+  justify-content: flex-end;
 }

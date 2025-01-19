@@ -12,7 +12,9 @@ body {
   @include mat.all-component-themes($theme);
   font-family: Roboto, "Helvetica Neue", sans-serif;
   margin: 0;
-  padding: 30px;
+  padding-top: 2%;
+  padding-left: 2%;
+  padding-right: 2%;
   height: 100%;
   background-color: #ffab5c;
     //background: linear-gradient(0deg, #ffffff 0%, #f9e4cd 55%, #f7c388 83%, #f7a64a 100%);

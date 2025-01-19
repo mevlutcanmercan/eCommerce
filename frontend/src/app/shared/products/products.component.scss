@@ -19,7 +19,9 @@
     display: flex;
     font-size: 16px;
     border-radius: 52px;
-    background: #ffff;  }
+    background: #ffff;
+    outline: 2px solid #ff7300;
+  }
 
   ::ng-deep .mat-mdc-paginator-outer-container {
     color: black;
@@ -73,6 +75,7 @@ mat-card-title {
   margin-bottom: 1rem;
   border-radius: 52px;
   justify-content: center;
+  outline: 2px solid #ff7300;
 }
 
 .product-container {
