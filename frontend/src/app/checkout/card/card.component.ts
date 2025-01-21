@@ -4,10 +4,13 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 import { HttpClient } from '@angular/common/http';
 import { CartService } from '../../services/card.service';
 import { UserService, User } from '../../services/user.service';
+import { MatButton } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @Component({
     selector: 'app-card',
-    imports: [FormsModule, ReactiveFormsModule],
+    imports: [FormsModule, ReactiveFormsModule,MatButton,ReactiveFormsModule,MatInputModule,MatFormFieldModule],
     templateUrl: './card.component.html',
     styleUrls: ['./card.component.scss']
 })
@@ -92,11 +95,12 @@ export class CardComponent implements OnInit {
     };
     console.log(paymentData);
 
-    this.http.post('http://localhost:3001/api/payment', paymentData, {
+    this.http.post('http://localhost:3000/api/payment', paymentData, {
   headers: { 'Content-Type': 'application/json' }
 }).subscribe(
   (response) => {
     console.log('Payment successful:', response);
+    this.cartService.clearCart();
   },
   (error) => {
     console.error('Payment failed:', error);
