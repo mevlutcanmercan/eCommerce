@@ -27,6 +27,16 @@ export class SnackbarService {
       horizontalPosition:'center'
     });
   }
+  productPurchased(duration: number = 3000) {
+    this.snackBar.openFromComponent(SnackbarComponent, {
+      data: { message: MESSAGES.productPurchased },
+      duration: duration,
+      verticalPosition: 'bottom',
+      horizontalPosition: 'center'
+    });
+  }
+
+
   openProductAdded(productAddedMessage:string,duration: number =3000)
   {
     this.snackBar.openFromComponent(SnackbarComponent,{

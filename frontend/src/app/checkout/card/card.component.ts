@@ -7,6 +7,9 @@ import { UserService, User } from '../../services/user.service';
 import { MatButton } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { SnackbarService } from '../../services/snackbar.service';
+import { MESSAGES } from '../../constants';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-card',
@@ -21,7 +24,7 @@ export class CardComponent implements OnInit {
   totalAmount: number = 0;
   buyer: any;
 
-  constructor(private fb: FormBuilder, private cartService: CartService, private http: HttpClient,private product: ProductService, private userService: UserService) {
+  constructor(private fb: FormBuilder, private cartService: CartService, private http: HttpClient,private product: ProductService, private userService: UserService,private snackbarService: SnackbarService,private router: Router) {
     this.cardForm = this.fb.group({
       cardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
       cardName: ['', Validators.required],
@@ -100,7 +103,9 @@ export class CardComponent implements OnInit {
 }).subscribe(
   (response) => {
     console.log('Payment successful:', response);
+    this.snackbarService.productPurchased();
     this.cartService.clearCart();
+    this.router.navigate(['/home']);
   },
   (error) => {
     console.error('Payment failed:', error);

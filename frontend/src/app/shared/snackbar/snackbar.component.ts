@@ -3,7 +3,7 @@ import { MAT_SNACK_BAR_DATA } from '@angular/material/snack-bar';
 
 @Component({
     selector: 'app-snackbar',
-    templateUrl: './snackbar.component.html',
+    template: '<span>{{ data.message }}</span>',
     styleUrls: ['./snackbar.component.scss'],
     standalone: false
 })
