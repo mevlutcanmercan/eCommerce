@@ -54,6 +54,11 @@ export const routes: Route[] = [
             path: 'profile',
             loadComponent: () => import('./user/profile/profile.component').then(m => m.ProfileComponent),
             title: 'Profile'
+          },
+          {
+            path: 'orders',
+            loadComponent: () => import('./checkout/orders/orders.component').then(m => m.OrdersComponent),
+            title: 'Orders'
           }
         ]
       },

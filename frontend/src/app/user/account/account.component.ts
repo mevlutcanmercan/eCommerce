@@ -8,7 +8,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { AuthService } from '../../services/auth.service';
 import { NgIf } from '@angular/common';
 import { MESSAGES } from '../../constants';
-import { ProfileComponent } from "../profile/profile.component";
 
 @Component({
     selector: 'app-account',

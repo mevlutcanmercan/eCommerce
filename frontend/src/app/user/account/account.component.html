@@ -2,6 +2,7 @@
   <mat-sidenav mode="side" opened>
     <mat-nav-list class="sidenavList">
       <a mat-list-item *ngIf="isLoggedIn" [routerLink]="['/account/profile']">Profile</a>
+      <a mat-list-item *ngIf="isLoggedIn" [routerLink]="['/account/orders']">Orders</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

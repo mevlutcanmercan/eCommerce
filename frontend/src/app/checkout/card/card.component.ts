@@ -10,6 +10,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { SnackbarService } from '../../services/snackbar.service';
 import { MESSAGES } from '../../constants';
 import { Router } from '@angular/router';
+import { OrderService } from '../../services/order.service';
 
 @Component({
     selector: 'app-card',
@@ -24,7 +25,7 @@ export class CardComponent implements OnInit {
   totalAmount: number = 0;
   buyer: any;
 
-  constructor(private fb: FormBuilder, private cartService: CartService, private http: HttpClient,private product: ProductService, private userService: UserService,private snackbarService: SnackbarService,private router: Router) {
+  constructor(private fb: FormBuilder, private cartService: CartService, private http: HttpClient,private product: ProductService, private userService: UserService,private snackbarService: SnackbarService,private router: Router,private orderService:OrderService) {
     this.cardForm = this.fb.group({
       cardNumber: ['', [Validators.required, Validators.minLength(16), Validators.maxLength(16)]],
       cardName: ['', Validators.required],
@@ -99,18 +100,34 @@ export class CardComponent implements OnInit {
     console.log(paymentData);
 
     this.http.post('http://localhost:3000/api/payment', paymentData, {
-  headers: { 'Content-Type': 'application/json' }
-}).subscribe(
-  (response) => {
-    console.log('Payment successful:', response);
-    this.snackbarService.productPurchased();
-    this.cartService.clearCart();
-    this.router.navigate(['/home']);
-  },
-  (error) => {
-    console.error('Payment failed:', error);
-  }
-);
+      headers: { 'Content-Type': 'application/json' }
+    }).subscribe(
+      (response) => {
+        console.log('Payment successful:', response);
 
+
+        const newOrder = {
+          orderShippingString: 'Sample Shipping Address',
+          orderCardNumber: paymentData.paymentCard.cardNumber,
+          orderQuantity: this.cartItems.length,
+          orderTotalPrice: this.totalAmount
+        };
+
+        this.orderService.addOrder(newOrder).subscribe(
+          (orderResponse) => {
+            console.log('Order saved:', orderResponse);
+            this.snackbarService.productPurchased();
+            this.cartService.clearCart();
+            this.router.navigate(['/home']);
+          },
+          (error) => {
+            console.error('Error saving order:', error);
+          }
+        );
+      },
+      (error) => {
+        console.error('Payment failed:', error);
+      }
+    );
   }
 }
