@@ -1,21 +1,4 @@
-.search-container {
-  position: relative;
-  width: 300%;
-  max-width: 600px;
-  margin: 20px auto;
-  text-align: left;
-  left: 450%;
-  align-items: center;
-  z-index: 1000;
-  transition: background 0.3s ease;
-  background: #ffffff;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  border-radius: 22px;
 
-  &:hover {
-    background: #363636;
-  }
-}
 input[type="text"] {
   flex: 1;
   padding: 10px;

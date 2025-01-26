@@ -32,3 +32,29 @@
   margin-left: 10px;
   justify-content: flex-end;
 }
+.search{
+position: absolute;
+width: 40%;
+max-width: 600px;
+margin-left: 35%;
+z-index: 1000;
+transition: background 0.3s ease;
+background: #ffffff;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+border-radius: 22px;
+
+&:hover {
+  background: #363636;
+}
+@media (width <= 1300px) {
+  width: 30% !important;
+  margin-left: 25%;
+}
+@media (width <= 700px) {
+  width: 20% !important;
+}
+@media (width <= 1920px) {
+  width: 35% !important;
+  margin-left: 30%;
+}
+}
