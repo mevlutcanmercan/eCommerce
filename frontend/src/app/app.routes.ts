@@ -45,6 +45,11 @@ export const routes: Route[] = [
         title: 'Register'
       },
       {
+        path: 'favorites',
+        loadComponent: () => import('./user/favorites/favorites.component').then(m => m.FavoritesComponent),
+        title: 'Favorites'
+      },
+      {
         path: 'account',
         loadComponent: () => import('./user/account/account.component').then(m => m.AccountComponent),
         canActivate: [ProfileGuard],
