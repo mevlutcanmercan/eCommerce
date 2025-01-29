@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 import { MatDialogRef } from '@angular/material/dialog';
 import { ErrorStateMatcher } from '@angular/material/core';
 import { User } from '../../services/user.service';
+import { FavoritesService } from '../../services/favorites.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -56,6 +57,7 @@ export class RegisterComponent {
 
   constructor(
     private authService: AuthService,
+    private favoritesService: FavoritesService,
     private router: Router,
     private dialogRef: MatDialogRef<RegisterComponent>
   ) { }

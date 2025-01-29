@@ -9,6 +9,7 @@ import { CommonModule } from '@angular/common';
 import { AuthService } from '../../services/auth.service';
 import { MatDialogModule, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ErrorStateMatcher } from '@angular/material/core';
+import { FavoritesService } from '../../services/favorites.service';
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -48,6 +49,7 @@ export class LoginComponent {
     private authService: AuthService,
     private router: Router,
     public dialogRef: MatDialogRef<LoginComponent>,
+    private favoritesService: FavoritesService,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {}
 
@@ -68,9 +70,13 @@ export class LoginComponent {
         if (response && response.token) {
           this.token = response.token;
           console.log('Token:', this.token);
-
           localStorage.setItem('token', this.token);
-
+          this.favoritesService.createDefault().subscribe({
+            next: (response: any) => {
+              console.log(response.message);
+            },
+            error: (error) => console.error('Error creating/checking favorites:', error)
+          });
           this.successMessage = 'Login successful!';
           this.router.navigate(['/home']).then(() => this.dialogRef.close());
         } else {

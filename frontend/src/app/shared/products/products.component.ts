@@ -9,7 +9,7 @@ import { MatToolbar } from '@angular/material/toolbar';
 import { CommonModule, CurrencyPipe, NgFor, NgIf } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatButton } from '@angular/material/button';
-import { MatIcon } from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { SnackbarService } from '../../services/snackbar.service';
 import { MatDialog } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
@@ -18,13 +18,14 @@ import { MESSAGES } from '../../constants';
 import { SearchService } from '../../services/search.service';
 import { FilterComponent } from "../filter/filter.component";
 import { FilterService } from '../../services/filter.service';
+import { FavoritesService } from '../../services/favorites.service';
 
 
 @Component({
     selector: 'app-products',
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss',
-    imports: [MatPaginator, MatCard, MatToolbar, MatCardHeader, MatCardHeader, MatCardContent, MatCardActions, MatCardTitle, CurrencyPipe, NgFor, NgIf, MatButton, CategoryselectionComponent, MatInputModule, FilterComponent, CommonModule]
+    imports: [MatIconModule,MatPaginator, MatCard, MatToolbar, MatCardHeader, MatCardHeader, MatCardContent, MatCardActions, MatCardTitle, CurrencyPipe, NgFor, NgIf, MatButton, CategoryselectionComponent, MatInputModule, FilterComponent, CommonModule]
 })
 export class ProductsComponent implements OnInit {
   products: Product[] = [];
@@ -42,6 +43,7 @@ export class ProductsComponent implements OnInit {
     private route: ActivatedRoute,
      private cartService: CartService,
     private snackbarService: SnackbarService,
+    private favoritesService: FavoritesService,
      private authService: AuthService,
      private searchService: SearchService,
      private filterService: FilterService,
@@ -174,6 +176,12 @@ export class ProductsComponent implements OnInit {
     }
   }
 
+  addToFavorites(product: Product): void {
+    if (this.authService.isLoggedIn && !this.isAdmin) {
+      this.favoritesService.addToFavorites(product);
+    //this.snackbarService.ProductAddedToFavorites;
+  }
+}
   onPageChange(event: PageEvent): void {
     this.pageSize = event.pageSize;
     this.currentPage = event.pageIndex;
