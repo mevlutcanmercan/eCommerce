@@ -91,3 +91,13 @@ mat-card-title {
 .product-container:not(.with-filter) {
   padding-left: 0;
 }
+.favorite {
+  color: deeppink;
+  border: none;
+  background: none;
+}
+
+.favorite:hover mat-icon {
+  transform: scale(1.4);
+  transition: transform 0.4s ease-in-out;
+}

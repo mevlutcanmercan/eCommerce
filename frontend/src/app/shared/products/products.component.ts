@@ -19,6 +19,7 @@ import { SearchService } from '../../services/search.service';
 import { FilterComponent } from "../filter/filter.component";
 import { FilterService } from '../../services/filter.service';
 import { FavoritesService } from '../../services/favorites.service';
+import { FavoriteselectionComponent } from '../../user/favoriteselection/favoriteselection.component';
 
 
 @Component({
@@ -178,10 +179,16 @@ export class ProductsComponent implements OnInit {
 
   addToFavorites(product: Product): void {
     if (this.authService.isLoggedIn && !this.isAdmin) {
-      this.favoritesService.addToFavorites(product);
-    //this.snackbarService.ProductAddedToFavorites;
-  }
-}
+      this.favoritesService.getUserCollections().subscribe(collections => {
+        this.dialog.open(FavoriteselectionComponent, {
+          width: '400px',
+          data: { collections, productId: product._id }
+        });
+      });} else {
+        console.warn('You must Login.');
+      }
+    }
+
   onPageChange(event: PageEvent): void {
     this.pageSize = event.pageSize;
     this.currentPage = event.pageIndex;

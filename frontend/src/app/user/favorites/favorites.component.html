@@ -1,3 +1,15 @@
-<div class="favorites">
+<h2>My Favorites</h2>
 
+<input [(ngModel)]="newCollectionName" placeholder="Enter new collection name">
+<button (click)="createCollection()">Create Collection</button>
+
+<div *ngFor="let collection of userCollections">
+  <h3>{{ collection.favoritesName }}</h3>
+
+  <div class="slider">
+    <div class="slide" *ngFor="let product of collection.favoritesProducts">
+      <img [src]="product.productImageURL" alt="{{ product.productName }}">
+      <p>{{ product.productName }}</p>
+    </div>
+  </div>
 </div>

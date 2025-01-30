@@ -1,0 +1,17 @@
+<h2 mat-dialog-title>Add to Favorites</h2>
+<div mat-dialog-content>
+  <mat-form-field appearance="outline" style="width: 100%;">
+    <mat-label>Pick a Collection</mat-label>
+    <mat-select [(value)]="selectedCollection">
+      <mat-option *ngFor="let collection of data.collections" [value]="collection._id">
+        {{ collection.favoritesName }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>
+
+
+<div mat-dialog-actions align="end">
+  <button mat-button (click)="dialogRef.close()">Close</button>
+  <button mat-raised-button color="primary" (click)="addToCollection()" [disabled]="!selectedCollection">Add</button>
+</div>

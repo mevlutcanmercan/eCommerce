@@ -46,7 +46,7 @@ export const routes: Route[] = [
       },
       {
         path: 'favorites',
-        loadComponent: () => import('./user/favorites/favorites.component').then(m => m.FavoritesComponent),
+        loadComponent: () => import('./user/favorites/favorites.component').then(m => m.FavoriteComponent),
         title: 'Favorites'
       },
       {
