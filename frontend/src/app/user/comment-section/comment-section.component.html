@@ -7,10 +7,10 @@
     <mat-list-item>
       <mat-icon matListIcon>person</mat-icon>
       <div matLine>
-        <p>{{ comment.yorum }}</p>
+        <p>{{ comment.comment }}</p>
       </div>
       <div matLine>
-        <mat-icon>star</mat-icon> <span>{{ comment.puan }}</span>
+        <mat-icon>star</mat-icon> <span>{{ comment.rate }}</span>
       </div>
     </mat-list-item>
     <mat-divider></mat-divider>
@@ -26,15 +26,15 @@
     <form [formGroup]="commentForm" (ngSubmit)="onSubmit()">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Yorum</mat-label>
-        <textarea matInput formControlName="yorum"></textarea>
-        <mat-error *ngIf="commentForm.get('yorum')?.invalid">Bu alan zorunludur</mat-error>
+        <textarea matInput formControlName="comment"></textarea>
+        <mat-error *ngIf="commentForm.get('comment')?.invalid">Bu alan zorunludur</mat-error>
       </mat-form-field>
 
       <div class="rating">
         <mat-icon
           *ngFor="let star of [1, 2, 3, 4, 5]"
           (click)="setRating(star)"
-          [class.selected]="star <= commentForm.get('puan')?.value">star</mat-icon>
+          [class.selected]="star <= commentForm.get('rate')?.value">star</mat-icon>
       </div>
 
       <button mat-raised-button color="primary" type="submit" [disabled]="!commentForm.valid">Yorum Yap</button>

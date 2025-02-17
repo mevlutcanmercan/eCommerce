@@ -44,9 +44,9 @@ export class CommentService {
 }
 export interface Comment {
   _id: string;
-  musteri_Id: string;
-  yorum: string;
-  puan: number;
-  urun_Id: string;
-  yorum_Onay: boolean;
+  userID: string;
+  comment: string;
+  rate: number;
+  productID: string;
+  approvalStatus: boolean;
 }

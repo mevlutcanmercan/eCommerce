@@ -13,7 +13,6 @@ import { MatDivider } from '@angular/material/divider';
 import { MatIcon } from '@angular/material/icon';
 import {MatExpansionModule} from '@angular/material/expansion';
 import { AuthService } from '../../services/auth.service';
-import e from 'express';
 import { SnackbarService } from '../../services/snackbar.service';
 
 @Component({
@@ -40,8 +39,8 @@ export class CommentSectionComponent implements OnInit, OnChanges {
     private snackbar :SnackbarService
   ) {
     this.commentForm = this.fb.group({
-      yorum: ['', Validators.required],
-      puan: [0, [Validators.required, Validators.min(1), Validators.max(5)]]
+      comment: ['', Validators.required],
+      rate: [0, [Validators.required, Validators.min(1), Validators.max(5)]]
     });
   }
 
@@ -64,13 +63,13 @@ export class CommentSectionComponent implements OnInit, OnChanges {
     if (this.authService.isLoggedIn) {
       if (this.commentForm.valid) {
         const newComment: Partial<Comment> = {
-          yorum: this.commentForm.value.yorum,
-          puan: this.commentForm.value.puan
+          comment: this.commentForm.value.comment,
+          rate: this.commentForm.value.rate
         };
 
-        this.commentService.addComment(this.productId!, newComment).subscribe(comment => {
-          this.comments.push(comment);
-          this.commentForm.reset({ yorum: '', puan: 0 });
+        this.commentService.addComment(this.productId!, newComment).subscribe(comments => {
+          this.comments.push(comments);
+          this.commentForm.reset({ comment: '', rate: 0 });
         });
       }
     }
@@ -81,6 +80,6 @@ export class CommentSectionComponent implements OnInit, OnChanges {
   }
 
   setRating(rating: number): void {
-    this.commentForm.patchValue({ puan: rating });
+    this.commentForm.patchValue({ rate: rating });
   }
 }
