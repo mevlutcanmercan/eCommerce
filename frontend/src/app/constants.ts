@@ -1,8 +1,8 @@
 export const MESSAGES = {
-  unauthorized: 'No token provided.',
-  profileFetchError: 'Profil alınamadı, Lütfen Giriş yapınız.',
-  passwordChangeSuccess: 'Şifre başarıyla değiştirildi',
-  passwordChangeError: 'Şifre değiştirilemedi',
+  unauthorized: 'No token provided!.',
+  profileFetchError: 'Profile not found, please login!.',
+  passwordChangeSuccess: 'Password changed successfully!',
+  passwordChangeError: 'Password change failed!',
   productAdded:'Product added to cart!',
   productNotAdded:'Product add failed!',
   productPurchased:'Product Purchased!',

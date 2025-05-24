@@ -1,9 +1,7 @@
 import { provideRouter, Route } from '@angular/router';
-
 import { RoleGuard } from './role.guard';
 import { DialogGuard } from './dialog.guard';
 import { ProfileGuard } from './profile.guard';
-
 import { LayoutComponent } from './layout/layout.component';
 
 
@@ -29,7 +27,7 @@ export const routes: Route[] = [
       },
       {
         path: 'products/:productId',
-        loadComponent: () => import('./user/product-details/product-details.component').then(m => m.ProductDetailsComponent)
+        loadComponent: () => import('./user/product-details/product-details.component').then(m => m.ProductDetailsComponent),
       },
 
       {

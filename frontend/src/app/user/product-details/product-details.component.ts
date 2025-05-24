@@ -5,6 +5,7 @@ import { CurrencyPipe, NgIf } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatCard, MatCardTitle } from '@angular/material/card';
 import { CommentSectionComponent } from "../comment-section/comment-section.component";
+import { Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-product-details',
@@ -13,10 +14,12 @@ import { CommentSectionComponent } from "../comment-section/comment-section.comp
     styleUrl: './product-details.component.scss'
 })
 export class ProductDetailsComponent implements OnInit {
+
   product: Product | null = null;
   constructor(
     private productService: ProductService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private titleService: Title
   ) {}
 
   ngOnInit(): void {
@@ -25,6 +28,7 @@ export class ProductDetailsComponent implements OnInit {
       this.productService.getProductbyProductId(productId).subscribe(
         (product: Product) => {
           this.product = product;
+          this.titleService.setTitle(product.productName);
         },
         (error) => {
           console.error('Error fetching product details:', error);
